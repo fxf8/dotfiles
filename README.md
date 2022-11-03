@@ -2,7 +2,7 @@
 A list of my configuration scripts (dotfiles)
 
 These dotfiles are copied directly from my own `~/.config/` directory with no modification. 
-The additional files `included` and `sync.sh` contain the program configuration names and a program which pulls the selected program configurations (from `included`) from the `~/.config/` directory.
+The additional files `included` and `sync.sh` contain the program configuration names and a program which copies the selected program configurations (from `included`) from the `~/.config/` directory.
 Other required packages may be needed for configurations such as packer for `nvim` and `jetbrains mono` font.
 
 # Installation
