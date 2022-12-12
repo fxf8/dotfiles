@@ -1,3 +1,4 @@
+--[[
 local lsp_installer = require("nvim-lsp-installer")
 local lsp_config = require("lspconfig")
 
@@ -23,3 +24,4 @@ lsp_config.sumneko_lua.setup {
     },
   },
 }
+]]--

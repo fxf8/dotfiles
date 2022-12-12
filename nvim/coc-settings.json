@@ -1,0 +1,15 @@
+{
+    "diagnostic.checkCurrentLine": true,
+    "languageserver": {
+        "ccls": {
+            "command": "clangd",
+            "filetypes": ["hpp", "h", "c", "cc", "cpp", "c++", "objc", "objcpp"],
+            "rootPatterns": [".clangd", ".ccls", "compile_commands.json", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/clangd"
+                }
+            }
+        }
+    }
+}
