@@ -1,4 +1,7 @@
 let g:Hexokinase_highlighters = ['backgroundfull']
+let g:godbolt_exec = 1
+
+CocEnable
 
 " Disable function highlighting (affects both C and C++ files)
 " let g:cpp_function_highlight = 0

@@ -34,5 +34,5 @@ function fish_right_prompt
     and set -l venv (string replace -r '.*/' '' -- "$VIRTUAL_ENV")
 
     set_color normal
-    string join " " -- $venv $duration $vcs $d $__fish_status
+    string join " " -- $venv $duration $vcs $d 
 end
