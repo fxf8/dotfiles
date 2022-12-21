@@ -6,7 +6,7 @@ The additional files `included` and `sync.sh` contain the program configuration 
 Other required packages may be needed for configurations such as packer for `nvim` and `jetbrains mono` font.
 
 # Installation
-Dotfiles may be directly placed in the `~./config/` directory if the correct packages are installed
+Dotfiles may be directly placed in the `~./config/` directory or symlinked. Packer and Plug will need to be installed, and they will then need to sync nvim plugins.
 
 ## Links to additional packages for configuration
 
