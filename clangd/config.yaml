@@ -1,2 +1,16 @@
 CompileFlags:
-  Add: [-std=c++2b]
+  Add: [-std=c++2b, -Wall, -pedantic]
+
+Diagnostics:
+  ClangTidy:
+    Add: [bugprone-*, modernize-*, cppcoreguidelines-*, performance-*, readability-*, abseil-*]
+    Remove: [misc-definitions-in-headers, modernize-use-trailing-return-type]
+    UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes
