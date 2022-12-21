@@ -3,8 +3,22 @@ CompileFlags:
 
 Diagnostics:
   ClangTidy:
-    Add: [bugprone-*, modernize-*, cppcoreguidelines-*, performance-*, readability-*, abseil-*]
-    Remove: [misc-definitions-in-headers, modernize-use-trailing-return-type]
+    Add: [
+      bugprone-*, modernize-*, cppcoreguidelines-*, 
+      performance-*, readability-*, abseil-*,
+      google-*, misc-*
+      ]
+    Remove: [
+      bugprone-easily-swappable-parameters,
+      bugprone-narrowing-conversions,
+      cppcoreguidelines-special-member-functions,
+      cppcoreguidelines-narrowing-conversions,
+      misc-definitions-in-headers,
+      misc-non-private-member-variables-in-classes,
+      modernize-use-trailing-return-type,
+      readability-named-parameter,
+      readability-convert-member-functions-to-static
+      ]
     UnusedIncludes: Strict
 
 InlayHints:

@@ -6,4 +6,6 @@ vim.opt.background = "dark"
 
 vim.cmd("syntax enable")
 vim.cmd("colorscheme tokyonight-night")
--- vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("set list")
+
+-- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- for transparent background
