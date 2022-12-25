@@ -7,21 +7,30 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use('wbthomason/packer.nvim')
 
+    -- LSP things
     use('williamboman/nvim-lsp-installer')
     use('neovim/nvim-lspconfig')
+    use { 'neoclide/coc.nvim', branch = 'release' }
+
 
     use('hrsh7th/nvim-compe')
-    use('folke/tokyonight.nvim')
     use('RRethy/vim-hexokinase')
+
+    -- Color schemes
+    use('folke/tokyonight.nvim')
     use('sickill/vim-monokai')
     use('Mofiqul/dracula.nvim')
 
-    use {
-    'tamton-aquib/duck.nvim'
-    }
+    use('andweeb/presence.nvim') -- Discord presence
 
-    use {
-        'neoclide/coc.nvim', branch = 'release'
+    use('airblade/vim-gitgutter') -- Git diff within vim
+
+    use { -- Pet duck that walk around the code
+        'tamton-aquib/duck.nvim',
+        config = function()
+            vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+            vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+        end
     }
 
     use {
