@@ -17,7 +17,9 @@ Diagnostics:
       misc-non-private-member-variables-in-classes,
       modernize-use-trailing-return-type,
       readability-named-parameter,
-      readability-convert-member-functions-to-static
+      readability-convert-member-functions-to-static,
+      google-readability-namespace-comments,
+      readability-make-member-function-const
       ]
     UnusedIncludes: Strict
 
