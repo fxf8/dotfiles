@@ -19,7 +19,8 @@ Diagnostics:
       readability-named-parameter,
       readability-convert-member-functions-to-static,
       google-readability-namespace-comments,
-      readability-make-member-function-const
+      readability-make-member-function-const,
+      cppcoreguidelines-avoid-magic-numbers
       ]
     UnusedIncludes: Strict
 
