@@ -19,6 +19,7 @@ Diagnostics:
       readability-named-parameter,
       readability-convert-member-functions-to-static,
       raedability-make-magic-numbers,
+      readability-magic-numbers,
       google-readability-namespace-comments,
       readability-make-member-function-const,
       cppcoreguidelines-avoid-magic-numbers
