@@ -29,6 +29,8 @@ return require('packer').startup(function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    use('theprimeagen/harpoon') -- Primeagen Harpoon
+
     use { -- LSP
         'VonHeikemen/lsp-zero.nvim',
         requires = {
