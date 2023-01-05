@@ -1,11 +1,6 @@
 #! /usr/bin/bash
 
-included=$(cat included)
+included_paths=$(cat included | tr '\n' ' ')
 
-search_phrase=$(cat included | tr "\n" "|" | rev | cut -c2- | rev)
+cp -r $included_paths .
 
-search_phrase="($search_phrase)"
-
-included_directories=$(ls -d ~/user-configs/* | egrep $search_phrase)
-
-cp -r $included_directories .
