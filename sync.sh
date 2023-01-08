@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-included_paths=$(cat included | tr '\n' ' ')
+included_paths=$(tr < included '\n' ' ')
 
-cp -r $included_paths .
+cp -r "$included_paths" .
 
