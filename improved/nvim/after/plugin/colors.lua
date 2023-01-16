@@ -8,5 +8,5 @@ vim.cmd("set list")
 
 -- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- for transparent background
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
