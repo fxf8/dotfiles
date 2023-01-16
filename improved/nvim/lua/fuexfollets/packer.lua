@@ -13,6 +13,9 @@ return require('packer').startup(function()
     use('folke/tokyonight.nvim')
     use('sickill/vim-monokai')
     use('Mofiqul/dracula.nvim')
+    use('xiyaowong/nvim-transparent') -- Transparent background
+
+    use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
 
     use('airblade/vim-gitgutter') -- Git diff within vim
     use { -- Git diff viewer side-by-side
@@ -31,6 +34,14 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
+    use { -- Pet duck that walk around the code
+        'tamton-aquib/duck.nvim',
+        config = function()
+            vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
+            vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
+        end
     }
 
     use('theprimeagen/harpoon') -- Primeagen Harpoon
