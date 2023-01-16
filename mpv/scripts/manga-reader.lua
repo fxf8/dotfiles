@@ -1,0 +1,1 @@
+/home/fuexfollets/inst/repo/mpv-manga-reader/manga-reader.lua
