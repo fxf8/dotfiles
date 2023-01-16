@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["keys.nvim"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/keys.nvim",
+    url = "https://github.com/tamton-aquib/keys.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
