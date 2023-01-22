@@ -1,0 +1,3 @@
+[submodule "polybar/polycmus"]
+	path = polybar/polycmus
+	url = https://github.com/mikeri/polycmus.git
