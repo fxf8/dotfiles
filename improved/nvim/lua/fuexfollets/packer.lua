@@ -10,10 +10,10 @@ return require('packer').startup(function()
     use('RRethy/vim-hexokinase')
 
     -- Color schemes
-    use('folke/tokyonight.nvim')
     use('sickill/vim-monokai')
     use('Mofiqul/dracula.nvim')
     use('xiyaowong/nvim-transparent') -- Transparent background
+    use('folke/tokyonight.nvim')
 
     use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
 
@@ -22,8 +22,12 @@ return require('packer').startup(function()
         'sindrets/diffview.nvim',
         requires = 'nvim-lua/plenary.nvim'
     }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
-    use('mbbill/undotree') -- undotre
+    use('mbbill/undotree') -- undotree
 
     use {
         'nvim-treesitter/nvim-treesitter',
