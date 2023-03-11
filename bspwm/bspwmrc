@@ -3,8 +3,13 @@
 
 nitrogen --restore &
 
-picom-pijulius --animations \
-    --animation-for-open-window zoom &
+picom --animations \
+    --animation-for-open-window zoom \
+    --animation-for-transient-window zoom \
+    --no-fading-openclose \
+    -I 1 \
+    -O 1 &
+
 # picom &
 # flameshot &
 polybar &
