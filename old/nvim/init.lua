@@ -1,8 +1,10 @@
-require("fuexfollets.packer")
 require("fuexfollets.set")
+require("fuexfollets.remap")
+require("fuexfollets.packer")
 require("fuexfollets.treesitter")
+require("fuexfollets.lsp")
 
-require("godbolt").setup({ -- Godbolt compiler
+require("godbolt").setup({
     languages = {
         cpp = { compiler = "g122", options = {} },
         c = { compiler = "cg122", options = {} },
