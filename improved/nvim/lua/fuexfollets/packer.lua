@@ -9,6 +9,9 @@ return require('packer').startup(function()
 
     use('RRethy/vim-hexokinase')
 
+    use('github/copilot.vim')
+    use('skywind3000/asyncrun.vim')
+
     -- Color schemes
     use('sickill/vim-monokai')
     use('Mofiqul/dracula.nvim')
