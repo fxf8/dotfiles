@@ -76,4 +76,13 @@ return require('packer').startup(function()
             {'rafamadriz/friendly-snippets'},
         }
     }
+
+    -- use({
+    --    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    --    config = function()
+    --        require("lsp_lines").setup()
+    --    end,
+    -- })
+
+    use('Maan2003/lsp_lines.nvim')
 end)

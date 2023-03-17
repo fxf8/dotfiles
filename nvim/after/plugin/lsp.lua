@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+local lsp_lines = require('lsp_lines')
 
 lsp.preset('recommended') -- Default presets
 
@@ -30,4 +31,13 @@ vim.diagnostic.config({
   severity_sort = true,
   float = true,
 })
+
+-- Disable virtual_text since it's redundant due to lsp_lines.
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+lsp_lines.setup()
+
+vim.diagnostic.config({ virtual_lines = true })
 
