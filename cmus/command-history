@@ -1,0 +1,44 @@
+q
+fset
+echo hi
+echo
+print
+set status_display_program=cmus-bundler
+shell cmus-bundler start
+shell cmus-bundler 
+shell cmus-bundler
+q!
+rand
+save
+pl-create favorites
+pl-create 
+player-prev-album
+wq
+factivate
+refresh
+toggle
+player-stop
+stop
+pl-stop
+live-filter 
+clear
+player-next-album
+clear 
+filter
+invert
+pl-rename moy
+pl-rename
+bind -f common = vol +10%
+bind -f common 7 view settings
+bind -f common 6 view filters
+bind -f common 5 view browser
+bind -f common 4 view queue
+bind -f common 3 view playlist
+bind -f common enter win-activate
+add
+colorscheme night
+colorscheme green
+colorscheme spotify
+colorscheme cyan
+live-filter q
+colorscheme dracula

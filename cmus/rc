@@ -1,0 +1,5 @@
+shell cmus-bundler start
+set status_display_program=cmus-bundler
+
+shell cmus-bundler plugin hakerdefo/cmus-lyrics
+# shell cmus-bundler plugin aeb5005/cmus-visualizer
