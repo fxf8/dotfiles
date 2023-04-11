@@ -25,6 +25,7 @@ return require('packer').startup(function()
         'sindrets/diffview.nvim',
         requires = 'nvim-lua/plenary.nvim'
     }
+    use('tpope/vim-fugitive') -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
