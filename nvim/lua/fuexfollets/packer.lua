@@ -9,8 +9,10 @@ return require('packer').startup(function()
 
     use('RRethy/vim-hexokinase')
 
+    use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')
-    use('skywind3000/asyncrun.vim')
+
+    use('azadkuh/vim-cmus')
 
     -- Color schemes
     use('sickill/vim-monokai')
@@ -30,6 +32,13 @@ return require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+    -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     use('mbbill/undotree') -- undotree
 
@@ -77,6 +86,7 @@ return require('packer').startup(function()
             {'rafamadriz/friendly-snippets'},
         }
     }
+    use('Issafalcon/lsp-overloads.nvim')
 
     -- use({
     --    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",

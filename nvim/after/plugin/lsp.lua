@@ -1,17 +1,14 @@
-local lsp = require('lsp-zero')
+local lsp = require('lsp-zero').preset({})
 
-local lsp_lines = require('lsp_lines')
-
-lsp.preset('recommended') -- Default presets
-
+-- lsp.preset('recommended') -- Default presets
 lsp.set_preferences({
-    suggest_lsp_servers = true,
-    setup_servers_on_start = true,
-    set_lsp_keymaps = true,
-    configure_diagnostics = true,
-    cmp_capabilities = true,
-    manage_nvim_cmp = true,
     call_servers = 'local',
+    cmp_capabilities = true,
+    configure_diagnostics = true,
+    manage_nvim_cmp = true,
+    set_lsp_keymaps = true,
+    setup_servers_on_start = true,
+    suggest_lsp_servers = true,
     sign_icons = {
         error = '✘',
         warn = '▲',
@@ -19,8 +16,6 @@ lsp.set_preferences({
         info = ''
     }
 })
-
-vim.opt.signcolumn = 'yes'
 
 lsp.on_attach(function(client, bufnr)
     local options = {buffer = bufnr, remap = false}
@@ -37,7 +32,27 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, options)
 end)
 
+require('lspconfig').clangd.setup({
+    cmd = { 'clangd', '--background-index', '--clang-tidy',
+        '--header-insertion=iwyu', '--completion-style=detailed' },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
+    --[[
+    init_options = {
+        clangdFileStatus = true,
+        usePlaceholders = true,
+        completeUnimported = true,
+        semanticHighlighting = true,
+        -- clangd will automatically find a compile_commands.json file in parent directories
+        -- root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
+    },
+    on_attach = lsp.on_attach,
+    root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
+    ]]--
+})
+
 lsp.setup()
+
+vim.opt.signcolumn = 'yes'
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -48,15 +63,3 @@ vim.diagnostic.config({
     float = true,
     virtual_lines = false -- { only_current_line = true }
 })
-
--- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-
--- Disable virtual_text since it's redundant due to lsp_lines.
--- vim.diagnostic.config({
---  virtual_text = false,
--- })
-
--- lsp_lines.setup()
-
--- vim.diagnostic.config({ virtual_lines = true })
-
