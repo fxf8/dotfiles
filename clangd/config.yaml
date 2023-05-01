@@ -28,9 +28,9 @@ Diagnostics:
     UnusedIncludes: Strict
 
 InlayHints:
+  DeducedTypes: Yes
   Enabled: Yes
   ParameterNames: Yes
-  DeducedTypes: Yes
 
 Hover:
   ShowAKA: Yes
