@@ -38,6 +38,8 @@ return require('packer').startup(function()
         run = function() vim.fn["mkdp#util#install"]() end,
     })
 
+    use('turbio/bracey.vim') -- Browser based live HTML/CSS/JS preview
+
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     use('mbbill/undotree') -- undotree
