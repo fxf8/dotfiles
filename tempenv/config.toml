@@ -1,0 +1,81 @@
+tests_location = "/home/fuexfollets/tests/"
+
+[forall_presets]
+execute_in_test_directory = [":"]
+
+[presets.example_preset]
+copy_with = [
+    "~/some-file-in-home-directory",
+    "./some-file-in-current-working-directory",
+]
+execute_in_test_directory = [
+    [
+        "this",
+        "is",
+        "executed",
+        "in",
+        "the",
+        "new",
+        "test",
+        "directory",
+    ],
+    [
+        "and",
+        "so",
+        "is",
+        "this",
+    ],
+]
+
+[presets.cpp]
+copy_with = [
+    "/home/fuexfollets/Projects/Constants/makefile/Makefile",
+    "/home/fuexfollets/Projects/Constants/clang-format/.clang-format",
+]
+execute_in_test_directory = [
+    [
+        "mkdir",
+        "src",
+    ],
+    [
+        "mkdir",
+        "lib",
+    ],
+    [
+        "touch",
+        "src/main.cpp",
+    ],
+    [
+        "cp",
+        "/home/fuexfollets/Projects/Constants/makefile/Makefile",
+        ".",
+    ],
+    [
+        "cp",
+        "/home/fuexfollets/Projects/Constants/clang-format/.clang-format",
+        ".",
+    ],
+]
+
+[presets.note]
+execute_in_test_directory = [
+    [
+        "touch",
+        "note.txt",
+    ],
+    [
+        "echo",
+        "'hello'",
+        ">>",
+        "note.txt",
+    ],
+    [
+        "ererethis",
+        "is",
+        "invalid",
+    ],
+    [
+        "touch",
+        "thiswasmade",
+    ],
+]
