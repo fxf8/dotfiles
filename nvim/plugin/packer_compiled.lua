@@ -140,6 +140,11 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["keylab.nvim"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/keylab.nvim",
+    url = "https://github.com/BooleanCube/keylab.nvim"
+  },
   ["keys.nvim"] = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/keys.nvim",
@@ -179,6 +184,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -254,6 +264,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-hexokinase",
     url = "https://github.com/RRethy/vim-hexokinase"
+  },
+  ["vim-latex-live-preview"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-latex-live-preview",
+    url = "https://github.com/xuhdev/vim-latex-live-preview"
   },
   ["vim-monokai"] = {
     loaded = true,

@@ -9,6 +9,8 @@ return require('packer').startup(function()
 
     use('RRethy/vim-hexokinase')
 
+    use('folke/neodev.nvim')
+
     use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')
 
@@ -21,6 +23,7 @@ return require('packer').startup(function()
     use('folke/tokyonight.nvim')
 
     use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
+    use('BooleanCube/keylab.nvim') -- Keybindings lab
 
     use('airblade/vim-gitgutter') -- Git diff within vim
     use { -- Git diff viewer side-by-side
@@ -39,6 +42,8 @@ return require('packer').startup(function()
     })
 
     use('turbio/bracey.vim') -- Browser based live HTML/CSS/JS preview
+
+    use('xuhdev/vim-latex-live-preview') -- Live preview for latex
 
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 

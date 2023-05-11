@@ -1,4 +1,8 @@
 local lsp = require('lsp-zero').preset({})
+local neodev = require('neodev')
+
+
+neodev.setup({})
 
 -- lsp.preset('recommended') -- Default presets
 lsp.set_preferences({
