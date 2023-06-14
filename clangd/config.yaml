@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-std=c++2b, -Wall, -pedantic]
+  Add: [-std=c++2b, -Wall, -pedantic, -Wextra]
   Compiler: g++
 
 Diagnostics:
@@ -27,10 +27,10 @@ Diagnostics:
       ]
     UnusedIncludes: Strict
 
+Hover:
+  ShowAKA: Yes
+
 InlayHints:
   DeducedTypes: Yes
   Enabled: Yes
   ParameterNames: Yes
-
-Hover:
-  ShowAKA: Yes
