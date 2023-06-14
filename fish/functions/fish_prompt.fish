@@ -49,7 +49,10 @@ function fish_prompt
 #       end
 #   end
 
-    set -l prompt_host (set_color cyan)$USER(set_color red)@(set_color magenta)$hostname(set_color red)" : "$normal
+    set -l red_at (set_color red)@
+    set -l user_host (set_color magenta)$hostname(set_color red)
+    set -l user (set_color magenta)$USER
+    set -l prompt_host $user" : "$normal
     # Shorten pwd if prompt is too long
     set -l pwd (prompt_pwd)
 
