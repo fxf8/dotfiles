@@ -8,6 +8,7 @@ if status is-interactive
     export PATH="$PATH:/home/fuexfollets/.cargo/bin" # cargo binaries
     export PATH="$PATH:/usr/lib/jvm/java-19-openjdk/bin" # openjdk-19 binaries
     export PATH="$PATH:/home/fuexfollets/go/bin" # golang binaries
+    export PATH="$PATH:/usr/lib/emscripten"
 
     # fish_vi_key_bindings
 
@@ -27,6 +28,5 @@ set fish_greeting
 
 alias clipboard="xclip -sel clip" 
 alias icat="kitty +kitten icat"
-alias mt="source /usr/local/bin/source-tkn"
 
 export PATH="/usr/local/shortcuts:$PATH"
