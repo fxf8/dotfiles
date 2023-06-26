@@ -5,10 +5,11 @@ if status is-interactive
     alias nv "nvim"
     alias lsa "ls -AChs --group-directories-first"
 
-    export PATH="$PATH:/home/fuexfollets/.cargo/bin" # cargo binaries
+    export PATH="$PATH:$HOME/.cargo/bin" # cargo binaries
     export PATH="$PATH:/usr/lib/jvm/java-19-openjdk/bin" # openjdk-19 binaries
-    export PATH="$PATH:/home/fuexfollets/go/bin" # golang binaries
+    export PATH="$PATH:$HOME/go/bin" # golang binaries
     export PATH="$PATH:/usr/lib/emscripten"
+    export PATH="$PATH:$HOME/.local/bin"
 
     # fish_vi_key_bindings
 
