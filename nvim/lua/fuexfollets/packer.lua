@@ -26,10 +26,6 @@ return require('packer').startup(function()
     use('BooleanCube/keylab.nvim') -- Keybindings lab
 
     use('airblade/vim-gitgutter') -- Git diff within vim
-    use { -- Git diff viewer side-by-side
-        'sindrets/diffview.nvim',
-        requires = 'nvim-lua/plenary.nvim'
-    }
     use('tpope/vim-fugitive') -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',
