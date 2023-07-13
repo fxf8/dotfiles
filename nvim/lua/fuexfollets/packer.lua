@@ -14,7 +14,6 @@ return require('packer').startup(function()
     use('github/copilot.vim')
 
     use('azadkuh/vim-cmus')
-    use('andweeb/presence.nvim')
 
     -- Color schemes
     use('sickill/vim-monokai')
