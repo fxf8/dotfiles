@@ -12,6 +12,9 @@ return require('packer').startup(function()
 
     use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
 
     use('azadkuh/vim-cmus')
 

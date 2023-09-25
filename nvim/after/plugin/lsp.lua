@@ -1,7 +1,6 @@
 local lsp = require('lsp-zero').preset({})
 local neodev = require('neodev')
 
-
 neodev.setup({})
 
 -- lsp.preset('recommended') -- Default presets
@@ -38,7 +37,13 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("v", "<leader>lzf", function() vim.lsp.buf.format() end, options)
 end)
 
-require('lspconfig').clangd.setup({
+local lspconfig = require('lspconfig')
+
+lsp.configure('cmake', {
+    root_dir = lspconfig.util.root_pattern('CMakeLists.txt')
+})
+
+lspconfig.clangd.setup({
     cmd = { 'clangd', '--background-index', '--clang-tidy',
         '--header-insertion=iwyu', '--completion-style=detailed' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
