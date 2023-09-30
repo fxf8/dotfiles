@@ -14,7 +14,7 @@ super + shift + r
     rofi -show run
 
 super + shift + f
-    rofi -show file-browser
+    rofi -show filebrowser
 
 super + shift + o
     rofi -show window
