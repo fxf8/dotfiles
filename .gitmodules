@@ -1,3 +1,6 @@
 [submodule "polybar/polycmus"]
 	path = polybar/polycmus
 	url = https://github.com/mikeri/polycmus.git
+[submodule "rofi/Tokyonight-rofi-theme"]
+	path = rofi/Tokyonight-rofi-theme
+	url = https://github.com/w8ste/Tokyonight-rofi-theme.git
