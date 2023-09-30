@@ -23,6 +23,7 @@ return require('packer').startup(function()
     use('Mofiqul/dracula.nvim')
     use('xiyaowong/nvim-transparent') -- Transparent background
     use('folke/tokyonight.nvim')
+    use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 
     use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
     use('BooleanCube/keylab.nvim') -- Keybindings lab
