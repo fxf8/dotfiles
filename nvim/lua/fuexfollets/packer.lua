@@ -15,6 +15,7 @@ return require('packer').startup(function()
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end}
+    use('p00f/godbolt.nvim')
 
     use('azadkuh/vim-cmus')
 
@@ -39,6 +40,7 @@ return require('packer').startup(function()
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
+    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
     use('turbio/bracey.vim') -- Browser based live HTML/CSS/JS preview
 

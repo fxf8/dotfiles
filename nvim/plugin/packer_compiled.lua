@@ -130,6 +130,11 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["godbolt.nvim"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/godbolt.nvim",
+    url = "https://github.com/p00f/godbolt.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -164,6 +169,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["magma-nvim"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/magma-nvim",
+    url = "https://github.com/dccsillag/magma-nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
