@@ -18,8 +18,6 @@ if status is-interactive
 
     set -x QT_QPA_PLATFORM_PLUGIN_PATH "/opt/android-sdk/emulator/lib64/qt/"
 
-
-
     fish_vi_key_bindings
     bind --mode insert \cf accept-autosuggestion
 
@@ -37,6 +35,16 @@ if status is-interactive
         pushd $(tempenv -n $argv[1])
     end
 
+    set -x fzf_fd_opts --hidden --exclude=.git
+
+    function _fzf_home_depth_2 ()
+        set fzf_fd_opts --base-directory $HOME --hidden --exclude=.git --max-depth=2 --type d -a
+        _fzf_search_directory
+        set -x fzf_fd_opts --hidden --exclude=.git
+    end
+
+    bind --mode insert \cp _fzf_home_depth_2
+    fzf_configure_bindings --directory=\co
 end
 
 set PREV_COMMANDS_RUN 0
