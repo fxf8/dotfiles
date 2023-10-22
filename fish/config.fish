@@ -24,6 +24,19 @@ if status is-interactive
     bind --mode insert \cf accept-autosuggestion
 
     export EDITOR="nvim"
+
+    function mkcd ()
+        mkdir -p $argv[1] && cd $argv[1]
+    end
+
+    function mkpd ()
+        mkdir -p $argv[1] && pushd $argv[1]
+    end
+
+    function mkts ()
+        pushd $(tempenv -n $argv[1])
+    end
+
 end
 
 set PREV_COMMANDS_RUN 0
