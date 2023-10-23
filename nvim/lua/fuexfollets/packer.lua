@@ -6,9 +6,8 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use('wbthomason/packer.nvim')
 
-    use('RRethy/vim-hexokinase')
-
     use('folke/neodev.nvim')
+    use('norcalli/nvim-colorizer.lua')
 
     use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')

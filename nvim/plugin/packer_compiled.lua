@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -286,11 +291,6 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
-  ["vim-hexokinase"] = {
-    loaded = true,
-    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-hexokinase",
-    url = "https://github.com/RRethy/vim-hexokinase"
-  },
   ["vim-latex-live-preview"] = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-latex-live-preview",
@@ -304,14 +304,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: duck.nvim
-time([[Config for duck.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nhatch\tduck\frequire1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tcook\tduck\frequiret\1\0\6\0\b\0\0176\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0004\5\0\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\6\0003\4\a\0004\5\0\0B\0\5\1K\0\1\0\0\15<leader>dk\0\15<leader>dd\6n\bset\vkeymap\bvim\0", "config", "duck.nvim")
-time([[Config for duck.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
+-- Config for: duck.nvim
+time([[Config for duck.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nhatch\tduck\frequire1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tcook\tduck\frequiret\1\0\6\0\b\0\0176\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0003\4\5\0004\5\0\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\6\0003\4\a\0004\5\0\0B\0\5\1K\0\1\0\0\15<leader>dk\0\15<leader>dd\6n\bset\vkeymap\bvim\0", "config", "duck.nvim")
+time([[Config for duck.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
