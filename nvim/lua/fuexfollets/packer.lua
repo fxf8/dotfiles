@@ -12,9 +12,9 @@ return require('packer').startup(function()
 
     use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
-    end}
+    end }
     use('p00f/godbolt.nvim')
 
     use('azadkuh/vim-cmus')
@@ -27,10 +27,10 @@ return require('packer').startup(function()
     use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 
     use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
-    use('BooleanCube/keylab.nvim') -- Keybindings lab
+    use('BooleanCube/keylab.nvim')   -- Keybindings lab
 
-    use('airblade/vim-gitgutter') -- Git diff within vim
-    use('tpope/vim-fugitive') -- Git wrapper
+    use('airblade/vim-gitgutter')    -- Git diff within vim
+    use('tpope/vim-fugitive')        -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -42,7 +42,7 @@ return require('packer').startup(function()
     })
     use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
-    use('turbio/bracey.vim') -- Browser based live HTML/CSS/JS preview
+    use('turbio/bracey.vim')             -- Browser based live HTML/CSS/JS preview
 
     use('xuhdev/vim-latex-live-preview') -- Live preview for latex
 
@@ -58,7 +58,7 @@ return require('packer').startup(function()
     use { -- Telescope
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use { -- Pet duck that walk around the code
@@ -72,29 +72,35 @@ return require('packer').startup(function()
     use('theprimeagen/harpoon') -- Primeagen Harpoon
     -- use('stevearc/oil.nvim') -- Filestructure management
     use('nvim-tree/nvim-web-devicons')
-
     use { -- LSP
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
-
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
             -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
         }
     }
     use('Issafalcon/lsp-overloads.nvim')
+
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+    }
 
     -- use({
     --    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -102,6 +108,5 @@ return require('packer').startup(function()
     --        require("lsp_lines").setup()
     --    end,
     -- })
-
     use('Maan2003/lsp_lines.nvim')
 end)
