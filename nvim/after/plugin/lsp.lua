@@ -35,7 +35,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, options)
     vim.keymap.set("n", "<leader>lzf", function() vim.lsp.buf.format() end, options)
     vim.keymap.set("v", "<leader>lzf", function() vim.lsp.buf.format() end, options)
-    vim.lsp.buf.completion({enable_auto_paren = true, enable_auto_signature = true})
 end)
 
 local lspconfig = require('lspconfig')
