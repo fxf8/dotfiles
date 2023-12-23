@@ -1,0 +1,5 @@
+! Revert keycodes to the original keys
+
+keycode 25 = w W
+keycode 26 = e E
+keycode 27 = r R

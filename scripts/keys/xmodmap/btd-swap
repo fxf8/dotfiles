@@ -1,0 +1,5 @@
+! 'w' = ',', 'e' = '.', 'r' = 'backspace'
+
+keycode 25 = comma less
+keycode 26 = period greater
+keycode 27 = BackSpace BackSpace
