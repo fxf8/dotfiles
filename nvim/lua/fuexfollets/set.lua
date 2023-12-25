@@ -25,6 +25,8 @@ vim.keymap.set("n", "<leader>E", function() vim.cmd("qa!") end) -- Quit all with
 -- Write and quit to all 'A"
 vim.keymap.set("n", "<leader>A", vim.cmd.wqa)
 
+-- Enter netrw
+
 -- Split based on current window size
 vim.keymap.set("n", "<leader>s", function()
     local width = vim.api.nvim_win_get_width(0)
