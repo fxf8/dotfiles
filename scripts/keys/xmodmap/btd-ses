@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# On start: Execute 'xmodmap btd-swap'
+# On stop:  Execute 'xmodmap btd-undo'
+
+xmodmap btd-swap
+
+read 
+
+xmodmap btd-undo

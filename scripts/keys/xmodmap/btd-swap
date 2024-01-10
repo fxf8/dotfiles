@@ -1,5 +1,8 @@
-! 'w' = ',', 'e' = '.', 'r' = 'backspace'
+! 'w' = ',', 'e' = '.', 'r' = 'backspace', 'a' = '5', 's' = '6', 'd' = '7'
 
 keycode 25 = comma less
 keycode 26 = period greater
 keycode 27 = BackSpace BackSpace
+keycode 38 = 5
+keycode 39 = 6
+keycode 40 = 7

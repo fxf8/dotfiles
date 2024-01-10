@@ -3,3 +3,6 @@
 keycode 25 = w W
 keycode 26 = e E
 keycode 27 = r R
+keycode 38 = a A
+keycode 39 = s S
+keycode 40 = d D
