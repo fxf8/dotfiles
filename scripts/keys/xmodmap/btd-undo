@@ -1,8 +1,11 @@
 ! Revert keycodes to the original keys
 
+keycode 24 = q Q
 keycode 25 = w W
 keycode 26 = e E
 keycode 27 = r R
 keycode 38 = a A
 keycode 39 = s S
 keycode 40 = d D
+keycode 41 = f F
+keycode 65 = space
