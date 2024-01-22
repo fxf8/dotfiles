@@ -23,7 +23,8 @@ Diagnostics:
       readability-magic-numbers,
       google-readability-namespace-comments,
       readability-make-member-function-const,
-      cppcoreguidelines-avoid-magic-numbers
+      cppcoreguidelines-avoid-magic-numbers,
+      abseil-string-find-str-contains
       ]
     UnusedIncludes: Strict
 
