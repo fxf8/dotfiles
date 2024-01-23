@@ -5,9 +5,11 @@ CompileFlags:
 Diagnostics:
   ClangTidy:
     Add: [
-      bugprone-*, modernize-*, cppcoreguidelines-*, 
-      performance-*, readability-*, abseil-*,
-      google-*, misc-*
+      abseil-*, android-*, bugprone-*,
+      cert-*, concurrency-*, cppcoreguidelines-*,
+      google-*, darwin-*, hicpp-*, llvm-*,
+      misc-*, modernize-*, mpi-*, portability-*,
+      performance-*, readability-*,
       ]
     Remove: [
       bugprone-easily-swappable-parameters,
