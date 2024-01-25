@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local lspconfig = require('lspconfig')
 local neodev = require('neodev')
 
 neodev.setup({})
@@ -37,8 +38,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("v", "<leader>lzf", function() vim.lsp.buf.format() end, options)
 end)
 
-local lspconfig = require('lspconfig')
-
 lsp.configure('cmake', {
     root_dir = lspconfig.util.root_pattern('CMakeLists.txt')
 })
@@ -59,6 +58,14 @@ lspconfig.clangd.setup({
     on_attach = lsp.on_attach,
     root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
     ]]--
+})
+
+lsp.configure('gopls', {
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities,
+    cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod', "gowork", "gotmpl" },
+    root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 })
 
 lsp.setup()
