@@ -26,7 +26,9 @@ Diagnostics:
       google-readability-namespace-comments,
       readability-make-member-function-const,
       cppcoreguidelines-avoid-magic-numbers,
-      abseil-string-find-str-contains
+      abseil-string-find-str-contains,
+      llvm-include-order,
+      hicpp-special-member-functions,
       ]
     UnusedIncludes: Strict
 
