@@ -10,6 +10,7 @@ return require('packer').startup(function()
     use('norcalli/nvim-colorizer.lua')
     use('vim-scripts/AnsiEsc.vim')
 
+    use('jbyuki/instant.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
     use('github/copilot.vim')
     use('Exafunction/codeium.vim')
