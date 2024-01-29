@@ -3,6 +3,7 @@ if status is-interactive
 
     alias nv "nvim"
     alias lsa "ls -AChs --group-directories-first"
+    alias py-activate "source $HOME/inst/venv/bin/activate.fish"
 
     set -x PATH "$PATH:$HOME/.cargo/bin" # cargo binaries
     set -x PATH "$PATH:$HOME/go/bin" # golang binaries
