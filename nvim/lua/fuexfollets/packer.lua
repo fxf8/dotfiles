@@ -31,8 +31,8 @@ return require('packer').startup(function()
     use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
     use('BooleanCube/keylab.nvim')   -- Keybindings lab
 
-    use('airblade/vim-gitgutter')    -- Git diff within vim
-    use('tpope/vim-fugitive')        -- Git wrapper
+    -- use('airblade/vim-gitgutter')    -- Git diff within vim
+    use('tpope/vim-fugitive') -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -61,14 +61,6 @@ return require('packer').startup(function()
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-
-    use { -- Pet duck that walk around the code
-        'tamton-aquib/duck.nvim',
-        config = function()
-            vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
-            vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
-        end
     }
 
     use('theprimeagen/harpoon') -- Primeagen Harpoon
@@ -147,6 +139,13 @@ return require('packer').startup(function()
             })
         end
     }
+
+    use('lvimuser/lsp-inlayhints.nvim')
+    use("mfussenegger/nvim-dap")
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use("theHamsta/nvim-dap-virtual-text")
+    use("jay-babu/mason-nvim-dap.nvim")
+    use('Civitasv/cmake-tools.nvim')
 
     -- use({
     --    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
