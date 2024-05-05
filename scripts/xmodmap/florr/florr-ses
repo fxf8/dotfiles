@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# On start: Execute 'xmodmap florr-swap'
+# On stop:  Execute 'xmodmap florr-undo'
+
+xmodmap florr-swap
+
+read -p "Press any key to stop..."
+
+xmodmap florr-undo
