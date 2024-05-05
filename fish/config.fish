@@ -5,7 +5,7 @@ if status is-interactive
     alias lsa "ls -AChs --group-directories-first"
     alias py-activate "source $HOME/inst/venv/bin/activate.fish"
 
-    set -x PATH "$PATH:$HOME/.cargo/bin" # cargo binaries
+    set -x PATH "$HOME/.cargo/bin:$PATH" # cargo binaries
     set -x PATH "$PATH:$HOME/go/bin" # golang binaries
     set -x PATH "$PATH:/usr/lib/emscripten"
     set -x PATH "$PATH:$HOME/.local/bin"
@@ -43,6 +43,8 @@ if status is-interactive
         _fzf_search_directory
         set -x fzf_fd_opts --hidden --exclude=.git
     end
+
+    zoxide init fish | source
 
     bind --mode insert \cp _fzf_home_depth_2
     fzf_configure_bindings --directory=\co

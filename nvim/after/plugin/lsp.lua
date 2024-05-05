@@ -1,6 +1,7 @@
 local lsp = require('lsp-zero').preset({})
 local lspconfig = require('lspconfig')
 local neodev = require('neodev')
+local inlay_hints = require('lsp-inlayhints')
 
 neodev.setup({})
 
@@ -22,7 +23,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local options = {buffer = bufnr, remap = false}
+    local options = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, options)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, options)
@@ -38,6 +39,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("v", "<leader>lzf", function() vim.lsp.buf.format() end, options)
 end)
 
+inlay_hints.setup()
+
 lsp.configure('cmake', {
     root_dir = lspconfig.util.root_pattern('CMakeLists.txt')
 })
@@ -46,6 +49,7 @@ lspconfig.clangd.setup({
     cmd = { 'clangd', '--background-index', '--clang-tidy',
         '--header-insertion=iwyu', '--completion-style=detailed' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
+    on_attach = inlay_hints.on_attach,
     --[[
     init_options = {
         clangdFileStatus = true,
@@ -57,7 +61,7 @@ lspconfig.clangd.setup({
     },
     on_attach = lsp.on_attach,
     root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
-    ]]--
+    ]] --
 })
 
 lsp.configure('gopls', {

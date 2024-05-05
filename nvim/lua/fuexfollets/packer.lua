@@ -42,7 +42,6 @@ return require('packer').startup(function()
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
-    use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
     use('turbio/bracey.vim')             -- Browser based live HTML/CSS/JS preview
 
@@ -96,6 +95,7 @@ return require('packer').startup(function()
         },
     }
 
+    --[[
     use {
         "rest-nvim/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },
@@ -139,7 +139,9 @@ return require('packer').startup(function()
             })
         end
     }
+    ]]--
 
+    use('nvim-neotest/nvim-nio')
     use('lvimuser/lsp-inlayhints.nvim')
     use("mfussenegger/nvim-dap")
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
