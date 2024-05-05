@@ -11,10 +11,10 @@
 ! '0' = '0'
 
 
-keycode 28 = '1'
-keycode 29 = '2'
-keycode 30 = '3'
-keycode 31 = '4'
-keycode 32 = '5'
-keycode 33 = '6'
+keycode 28 = 1
+keycode 29 = 2
+keycode 30 = 3
+keycode 31 = 4
+keycode 32 = 5
+keycode 33 = 6
 
