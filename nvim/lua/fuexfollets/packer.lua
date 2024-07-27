@@ -12,14 +12,11 @@ return require('packer').startup(function()
 
     use('jbyuki/instant.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
-    use('github/copilot.vim')
+    -- use('github/copilot.vim')
     use('Exafunction/codeium.vim')
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end }
-    use('p00f/godbolt.nvim')
-
-    use('azadkuh/vim-cmus')
 
     -- Color schemes
     use('sickill/vim-monokai')
@@ -27,9 +24,8 @@ return require('packer').startup(function()
     use('xiyaowong/nvim-transparent') -- Transparent background
     use('folke/tokyonight.nvim')
     use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
-
-    use { 'tamton-aquib/keys.nvim' } -- Screenkey equivalient for nvim
-    use('BooleanCube/keylab.nvim')   -- Keybindings lab
+    use('BooleanCube/keylab.nvim') -- Keybindings lab
+    use('rose-pine/neovim')        -- Rose Pine color scheme
 
     -- use('airblade/vim-gitgutter')    -- Git diff within vim
     use('tpope/vim-fugitive') -- Git wrapper
@@ -139,7 +135,8 @@ return require('packer').startup(function()
             })
         end
     }
-    ]]--
+    ]]
+    --
 
     use('nvim-neotest/nvim-nio')
     use('lvimuser/lsp-inlayhints.nvim')

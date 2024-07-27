@@ -53,6 +53,10 @@ fi
 # picom-pijulius -animations \
 #     --animation-for-open-window zoom &
 
+setxkbmap -option caps:swapescape
+echo 0.0 > /tmp/actual-volume-exact-percent
+pactl set-sink-volume 0 0%
+
 exec bspwm
 
 # twm &
@@ -61,4 +65,3 @@ exec bspwm
 # xterm -geometry 80x20+494-0 &
 # exec xterm -geometry 80x66+0+0 -name login
 
-setxkbmap -option caps:swapescape

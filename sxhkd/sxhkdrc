@@ -129,19 +129,20 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
 XF86AudioRaiseVolume
-    pactl set-sink-volume 0 +5%
+    pactl set-sink-volume 0 +5% && echo "scale=2; $(cat /tmp/actual-volume-exact-percent) + 0.05" | bc > "/tmp/actual-volume-exact-percent"
 
 XF86AudioLowerVolume
-    pactl set-sink-volume 0 -5%
+    pactl set-sink-volume 0 -5% && echo "scale=2; if ($(cat /tmp/actual-volume-exact-percent) > 0) $(cat /tmp/actual-volume-exact-percent) - 0.05 else 0.0" | bc > "/tmp/actual-volume-exact-percent"
 
 XF86AudioMute
     pactl set-sink-mute 0 toggle
 
 XF86MonBrightnessUp
-  brightnessctl s 200+
+  brightnessctl s 10+
 
 XF86MonBrightnessDown
-  brightnessctl s 200-
+  brightnessctl s 10-
 
+super + shift + p
+    flameshot gui

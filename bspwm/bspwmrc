@@ -3,6 +3,7 @@
 
 nitrogen --restore &
 
+pactl set-sink-volume 0 0%
 picom --animations \
     --animation-for-open-window zoom \
     --animation-for-transient-window zoom \
@@ -21,7 +22,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d I II III IV V VI VII VIII IX X 
 
 bspc config border_width         2
-bspc config window_gap          4
+bspc config window_gap          8
 
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true

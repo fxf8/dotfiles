@@ -29,29 +29,18 @@ local accept_line = vim.fn['codeium#AcceptNextLine']
 ]]
 --
 
---[[
 local accept = function() vim.cmd('call codeium#Accept()') end
 local cycle1 = function() vim.cmd('call codeium#CycleCompletions(1)') end
 local cycle2 = function() vim.cmd('call codeium#CycleCompletions(-1)') end
 local clear = function() vim.cmd('call codeium#Clear()') end
 local accept_word = function() vim.cmd('call codeium#AcceptNextWord()') end
 local accept_line = function() vim.cmd('call codeium#AcceptNextLine()') end
-]]
 
-local accept = vim.fn['codeium#Accept']
-local cycle1 = function() vim.fn['codeium#CycleCompletions'](1) end
-local cycle2 = function() vim.fn['codeium#CycleCompletions'](-1) end
-local clear = vim.fn['codeium#Clear']
-local accept_word = vim.fn['codeium#AcceptNextWord']
-local accept_line = vim.fn['codeium#AcceptNextLine']
-
-local opts = { expr = true }
+local opts = { expr = true, silent = true, replace_keycodes = true }}
 
 vim.keymap.set('i', '<M-j>', accept, opts)
 vim.keymap.set('i', '<M-h>', cycle1, opts)
 vim.keymap.set('i', '<M-k>', cycle2, opts)
 vim.keymap.set('i', '<M-x>', clear, opts)
-vim.keymap.set('i', '<M-w>', accept_word, opts)
 vim.keymap.set('i', '<M-l>', accept_line, opts)
-
--- disable completion by pressing the tab button
+vim.keymap.set('i', '<M-w>', accept_word, opts)

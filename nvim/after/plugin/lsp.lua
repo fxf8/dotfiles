@@ -72,6 +72,17 @@ lsp.configure('gopls', {
     root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 })
 
+--[[
+lsp.configure('rust_analyzer', {
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities,
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_dir = lspconfig.util.root_pattern("Cargo.toml", ".git"),
+    settings = { documentSymbol = true },
+})
+]] --
+
 lsp.setup()
 
 vim.opt.signcolumn = 'yes'

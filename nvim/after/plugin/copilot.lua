@@ -9,6 +9,7 @@
 ]]
 --
 
+--[[
 local cmp = require('cmp')
 
 --[[
@@ -19,8 +20,10 @@ vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#AcceptLine()', { silent = true, e
 vim.api.nvim_set_keymap("i", "<M-w>", 'copilot#AcceptWord()', { silent = true, expr = true })
 vim.api.nvim_set_keymap("i", "<M-d>", 'copilot#Dismiss()', { silent = true, expr = true })
 vim.api.nvim_set_keymap("i", "<M-s>", 'copilot#Suggest()', { silent = true, expr = true })
-]]--
+]]
+   --
 
+--[[
 local opts = { noremap = true, silent = true, expr = true, replace_keycodes = false }
 
 vim.keymap.set('i', '<M-j>', 'copilot#Accept()', opts)
@@ -37,3 +40,5 @@ vim.keymap.set('n', '<leader>co',
     end,
     {}
 )
+]]
+   --

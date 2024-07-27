@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?/init.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1702233742/lib/lua/5.1/?.so"
+local package_path_str = "/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/fuexfollets/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -124,11 +124,6 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/codeium.vim",
     url = "https://github.com/Exafunction/codeium.vim"
   },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["dracula.nvim"] = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/dracula.nvim",
@@ -149,11 +144,6 @@ _G.packer_plugins = {
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["godbolt.nvim"] = {
-    loaded = true,
-    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/godbolt.nvim",
-    url = "https://github.com/p00f/godbolt.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -168,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/keylab.nvim",
     url = "https://github.com/BooleanCube/keylab.nvim"
-  },
-  ["keys.nvim"] = {
-    loaded = true,
-    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/keys.nvim",
-    url = "https://github.com/tamton-aquib/keys.nvim"
   },
   ["lsp-inlayhints.nvim"] = {
     loaded = true,
@@ -223,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
+  },
+  neovim = {
+    loaded = true,
+    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/neovim",
+    url = "https://github.com/rose-pine/neovim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -314,11 +304,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  ["vim-cmus"] = {
-    loaded = true,
-    path = "/home/fuexfollets/.local/share/nvim/site/pack/packer/start/vim-cmus",
-    url = "https://github.com/azadkuh/vim-cmus"
   },
   ["vim-fugitive"] = {
     loaded = true,

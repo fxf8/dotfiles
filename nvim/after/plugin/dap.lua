@@ -202,6 +202,50 @@ dap.adapters.lldb = {
     name = 'lldb'
 }
 
+-- This should also work with python poetry
+
+dap.configurations.python = {
+    {
+        type = 'python',
+        request = 'launch',
+        name = 'Launch file',
+        program = "${file}",
+        pythonPath = function()
+            local cwd = vim.fn.getcwd()
+            local file = Path:new(DAP_CACHED_TEST_EXECUTION_TABLE)
+            local json_data = vim.fn.json_decode(file:read())
+
+            if json_data == nil then
+                json_data = {}
+            end
+
+            if json_data[cwd] == nil then
+                json_data[cwd] = {
+                    use_cached = false,
+                    path = nil,
+                    args = nil,
+                }
+            end
+
+            if json_data[cwd].use_cached then
+                return json_data[cwd].path
+            end
+
+            local res = vim.fn.input('Path to python interpreter: ', vim.fn.getcwd() .. '/', 'file')
+            json_data[cwd].path = res
+
+            file:write(vim.fn.json_encode(json_data), "w")
+
+            return res
+        end,
+    },
+}
+dap.adapters.python = {
+    type = 'executable',
+    command = 'python',
+    args = { '-m', 'debugpy.adapter' }
+}
+
 dapui.setup()
 
 vim.keymap.set('n', '<leader>dt', dapui.toggle)                                 -- Dap toggle
