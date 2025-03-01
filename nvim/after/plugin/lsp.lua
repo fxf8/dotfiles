@@ -2,6 +2,9 @@ local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
 local neodev = require('neodev')
 local cmp = require('cmp')
+local mason = require('mason')
+
+mason.setup()
 
 local inlay_hints = require('lsp-inlayhints')
 inlay_hints.setup()
@@ -58,14 +61,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-require('lspconfig').lua_ls.setup({})
+lspconfig.lua_ls.setup({})
 
 lspconfig.clangd.setup({
     cmd = { 'clangd', '--background-index', '--clang-tidy',
         '--header-insertion=iwyu', '--completion-style=detailed' },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
     on_attach = inlay_hints.on_attach,
-    --[[
     init_options = {
         clangdFileStatus = true,
         usePlaceholders = true,
@@ -74,9 +76,16 @@ lspconfig.clangd.setup({
         -- clangd will automatically find a compile_commands.json file in parent directories
         -- root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
     },
-    on_attach = lsp.on_attach,
     root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')
-    ]] --
+})
+
+lspconfig.rust_analyzer.setup({
+    on_attach = inlay_hints.on_attach,
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_dir = lspconfig.util.root_pattern("Cargo.toml", ".git"),
+    settings = { documentSymbol = true },
+    capabilities = lsp.capabilities
 })
 
 lsp.configure('gopls', {
@@ -87,16 +96,9 @@ lsp.configure('gopls', {
     root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 })
 
---[[
-lsp.configure('rust_analyzer', {
-    on_attach = lsp.on_attach,
-    capabilities = lsp.capabilities,
-    cmd = { 'rust-analyzer' },
-    filetypes = { 'rust' },
-    root_dir = lspconfig.util.root_pattern("Cargo.toml", ".git"),
-    settings = { documentSymbol = true },
-})
-]] --
+lspconfig.ruff.setup {}
+lspconfig.basedpyright.setup {}
+-- lspconfig.pyright.setup {}
 
 lsp.setup()
 
@@ -124,3 +126,44 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({}),
 })
+
+local expand_macro = function()
+    vim.lsp.buf_request_all(0, "rust-analyzer/expandMacro",
+        vim.lsp.util.make_position_params(),
+        function(result)
+            -- Create a new tab
+            vim.cmd("vsplit")
+
+            -- Create an empty scratch buffer (non-listed, non-file i.e scratch)
+            -- :help nvim_create_buf
+            local buf = vim.api.nvim_create_buf(false, true)
+
+            -- and set it to the current window
+            -- :help nvim_win_set_buf
+            vim.api.nvim_win_set_buf(0, buf)
+
+            if result then
+                -- set the filetype to rust so that rust's syntax highlighting works
+                -- :help nvim_set_option_value
+                vim.api.nvim_set_option_value("filetype", "rust", { buf = 0 })
+
+                -- Insert the result into the new buffer
+                for client_id, res in pairs(result) do
+                    if res and res.result and res.result.expansion then
+                        -- :help nvim_buf_set_lines
+                        vim.api.nvim_buf_set_lines(buf, -1, -1, false, vim.split(res.result.expansion, "\n"))
+                    else
+                        vim.api.nvim_buf_set_lines(buf, -1, -1, false, {
+                            "No expansion available."
+                        })
+                    end
+                end
+            else
+                vim.api.nvim_buf_set_lines(buf, -1, -1, false, {
+                    "Error: No result returned."
+                })
+            end
+        end)
+end
+
+vim.api.nvim_create_user_command('ExpandMacro', expand_macro, {})
