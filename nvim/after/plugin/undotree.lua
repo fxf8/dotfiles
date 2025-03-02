@@ -1,3 +1,4 @@
+local wk = require("which-key")
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- vimscript
@@ -16,3 +17,7 @@ if has("persistent_undo")
     set undofile
 endif
 ]]
+
+wk.add({
+    { "<leader>u", desc = "Toggle undo tree" },
+})

@@ -1,3 +1,4 @@
+local wk = require("which-key")
 local toggleterm = require('toggleterm')
 
 toggleterm.setup({
@@ -42,3 +43,10 @@ vim.keymap.set("n", "<leader>ti",
     end,
     {}
 )
+
+
+wk.add({
+    { "<leader>t",  group = "Terminal" },
+    { "<leader>to", desc = "Toggle terminal" },
+    { "<leader>ti", desc = "Toggle terminal in git directory" },
+})

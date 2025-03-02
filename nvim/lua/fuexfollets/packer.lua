@@ -6,6 +6,7 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use('wbthomason/packer.nvim')
 
+    use("folke/which-key.nvim")
     use('folke/neodev.nvim')
     use('norcalli/nvim-colorizer.lua')
     use('vim-scripts/AnsiEsc.vim')

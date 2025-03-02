@@ -1,3 +1,4 @@
+local wk = require("which-key")
 local Path = require("plenary.path")
 local dapui = require("dapui")
 local dap = require("dap")
@@ -248,19 +249,53 @@ dap.adapters.python = {
 
 dapui.setup()
 
-vim.keymap.set('n', '<leader>dt', dapui.toggle)                                 -- Dap toggle
-vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)                        -- Dap toggle breakpoint
-vim.keymap.set('n', '<leader>dp', dap.continue)                                 -- Dap proceed
-vim.keymap.set('n', '<leader>dmu', dap.up)                                      -- Dap move up
-vim.keymap.set('n', '<leader>dmd', dap.down)                                    -- Dap move down
-vim.keymap.set('n', '<leader>dr', dap.restart)                                  -- Dap restart
-vim.keymap.set('n', '<leader>dso', dap.step_over)                               -- Dap step over
-vim.keymap.set('n', '<leader>dsi', dap.step_into)                               -- Dap step into
-vim.keymap.set('n', '<leader>dtp', dap.pause)                                   -- Dap thread paues
-vim.keymap.set('n', '<leader>dts', dap.stop)                                    -- Dap thread stop
-vim.keymap.set('n', '<leader>dtc', dap.close)                                   -- Dap thread close
-vim.keymap.set('n', '<leader>dro', dap.repl.open)                               -- Dap repl open
-vim.keymap.set('n', '<leader>dap', function() dapui.open({ reset = true }) end) -- open dapui
-vim.keymap.set('n', '<leader>dce', DAP_ENABLE_USE_CACHE)                        -- Dap cache enable
-vim.keymap.set('n', '<leader>dcd', DAP_DISABLE_USE_CACHE)                       -- Dap cache disable
-vim.keymap.set('n', '<leader>dct', DAP_TOGGLE_USE_CACHE)                        -- Dap cache toggle
+-- Dap Main 'd'
+vim.keymap.set('n', '<leader>dt', dapui.toggle)                                -- Dap toggle
+vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)                       -- Dap toggle breakpoint
+vim.keymap.set('n', '<leader>dc', dap.continue)                                -- Dap proceed
+vim.keymap.set('n', '<leader>do', function() dapui.open({ reset = true }) end) -- open dapui
+
+-- Dap Movements 'dm'
+vim.keymap.set('n', '<leader>dmu', dap.up)        -- Dap move up
+vim.keymap.set('n', '<leader>dmd', dap.down)      -- Dap move down
+vim.keymap.set('n', '<leader>dmr', dap.restart)   -- Dap restart
+vim.keymap.set('n', '<leader>dmo', dap.step_over) -- Dap step over
+vim.keymap.set('n', '<leader>dmi', dap.step_into) -- Dap step into
+
+-- Dap Runtime 'dr'
+vim.keymap.set('n', '<leader>drp', dap.pause)     -- Dap thread paues
+vim.keymap.set('n', '<leader>drs', dap.stop)      -- Dap thread stop
+vim.keymap.set('n', '<leader>drc', dap.close)     -- Dap thread close
+vim.keymap.set('n', '<leader>dro', dap.repl.open) -- Dap repl open
+
+-- Dap Cache 'dc'
+vim.keymap.set('n', '<leader>dce', DAP_ENABLE_USE_CACHE)  -- Dap cache enable
+vim.keymap.set('n', '<leader>dcd', DAP_DISABLE_USE_CACHE) -- Dap cache disable
+vim.keymap.set('n', '<leader>dct', DAP_TOGGLE_USE_CACHE)  -- Dap cache toggle
+
+wk.add({
+    -- Main
+    { "<leader>d",   group = "Dap" },
+    { "<leader>dt",  desc = "Dap toggle" },
+    { "<leader>db",  desc = "Dap toggle breakpoint" },
+    { "<leader>dc",  desc = "Dap proceed" },
+    { "<leader>do",  desc = "Dap open ui" },
+    -- Movement
+    { "<leader>dm",  group = "Dap movement" },
+    { "<leader>dmu", desc = "Dap move up" },
+    { "<leader>dmd", desc = "Dap move down" },
+    { "<leader>dmr", desc = "Dap restart" },
+    { "<leader>dmo", desc = "Dap step over" },
+    { "<leader>dmi", desc = "Dap step into" },
+    -- Runtime
+    { "<leader>dr",  group = "Dap runtime" },
+    { "<leader>drp", desc = "Dap thread paues" },
+    { "<leader>drs", desc = "Dap thread stop" },
+    { "<leader>drc", desc = "Dap thread close" },
+    { "<leader>dro", desc = "Dap repl open" },
+    -- Cache
+    { "<leader>dc",  group = "Dap cache" },
+    { "<leader>dce", desc = "Dap cache enable" },
+    { "<leader>dcd", desc = "Dap cache disable" },
+    { "<leader>dct", desc = "Dap cache toggle" },
+})

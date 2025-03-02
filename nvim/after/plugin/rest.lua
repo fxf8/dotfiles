@@ -1,3 +1,13 @@
-vim.keymap.set('n', '<leader>re', '<Plug>RestNvim', { desc = 'execute request' })
-vim.keymap.set('n', '<leader>rp', '<P ug>RestNvimPreview', { desc = 'preview curl' })
-vim.keymap.set('n', '<leader>rr', '<Plug>RestNvimLast', { desc = 'repeat last request' })
+local wk = require("which-key")
+
+vim.keymap.set('n', '<leader>re', '<Plug>RestNvim', { desc = 'Execute request' })
+vim.keymap.set('n', '<leader>rp', '<Plug>RestNvimPreview', { desc = 'Preview curl' })
+vim.keymap.set('n', '<leader>rr', '<Plug>RestNvimLast', { desc = 'Repeat last request' })
+
+wk.add({
+    { "<leader>r",  group = "Rest" },
+    { "<leader>re", desc = "Execute request" },
+    { "<leader>rp", desc = "Preview curl" },
+    { "<leader>rr", desc = "Repeat last request" },
+})
+

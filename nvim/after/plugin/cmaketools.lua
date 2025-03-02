@@ -1,11 +1,23 @@
+local wk = require("which-key")
 local cmake_tools = require("cmake-tools")
 
-vim.keymap.set("n", "<leader>cmp", function() vim.cmd("CMakeBuild") end)           -- C - m - pile
-vim.keymap.set("n", "<leader>cmg", function() vim.cmd("CMakeGenerate") end)        -- C - make - Generate
-vim.keymap.set("n", "<leader>csd", function() vim.cmd("CMakeSelectBuildDir") end)  -- CMake - Select - Directory
-vim.keymap.set("n", "<leader>cms", cmake_tools.select_build_target)
-vim.keymap.set("n", "<leader>cmk", function() vim.cmd("CMakeSelectBuildType") end) -- CMake - Select - Build - Type
-vim.keymap.set("n", "<leader>cmo", function() vim.cmd("CMakeOpenExecutor") end)    -- CMake - Open - Executor
+vim.keymap.set("n", "<leader>cb", function() vim.cmd("CMakeBuild") end)           -- C - m - pile
+vim.keymap.set("n", "<leader>cg", function() vim.cmd("CMakeGenerate") end)        -- C - make - Generate
+vim.keymap.set("n", "<leader>cd", function() vim.cmd("CMakeSelectBuildDir") end)  -- CMake - Select - Directory
+vim.keymap.set("n", "<leader>cm", cmake_tools.select_build_target)
+vim.keymap.set("n", "<leader>ct", function() vim.cmd("CMakeSelectBuildType") end) -- CMake - Select - Build - Type
+vim.keymap.set("n", "<leader>ce", function() vim.cmd("CMakeOpenExecutor") end)    -- CMake - Open - Executor
+
+wk.add({
+    { "<leader>c",  group = "CMake" },
+    { "<leader>cb", desc = "Build" },
+    { "<leader>cg", desc = "Generate" },
+    { "<leader>cd", desc = "Select Directory" },
+    { "<leader>cm", desc = "Select Build Target" },
+    { "<leader>ct", desc = "Select Build Type" },
+    { "<leader>ce", desc = "Open Executor" },
+})
+
 
 cmake_tools.setup {
     cmake_command = "cmake",                                          -- this is used to specify cmake command path
@@ -135,3 +147,5 @@ cmake_tools.setup {
         refresh_rate_ms = 100, -- how often to iterate icons
     },
 }
+
+
