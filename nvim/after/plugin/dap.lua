@@ -241,6 +241,7 @@ dap.configurations.python = {
         end,
     },
 }
+
 dap.adapters.python = {
     type = 'executable',
     command = 'python',
@@ -252,7 +253,7 @@ dapui.setup()
 -- Dap Main 'd'
 vim.keymap.set('n', '<leader>dt', dapui.toggle)                                -- Dap toggle
 vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)                       -- Dap toggle breakpoint
-vim.keymap.set('n', '<leader>dc', dap.continue)                                -- Dap proceed
+vim.keymap.set('n', '<leader>dp', dap.continue)                                -- Dap proceed
 vim.keymap.set('n', '<leader>do', function() dapui.open({ reset = true }) end) -- open dapui
 
 -- Dap Movements 'dm'
@@ -264,7 +265,6 @@ vim.keymap.set('n', '<leader>dmi', dap.step_into) -- Dap step into
 
 -- Dap Runtime 'dr'
 vim.keymap.set('n', '<leader>drp', dap.pause)     -- Dap thread paues
-vim.keymap.set('n', '<leader>drs', dap.stop)      -- Dap thread stop
 vim.keymap.set('n', '<leader>drc', dap.close)     -- Dap thread close
 vim.keymap.set('n', '<leader>dro', dap.repl.open) -- Dap repl open
 
@@ -278,7 +278,7 @@ wk.add({
     { "<leader>d",   group = "Dap" },
     { "<leader>dt",  desc = "Dap toggle" },
     { "<leader>db",  desc = "Dap toggle breakpoint" },
-    { "<leader>dc",  desc = "Dap proceed" },
+    { "<leader>dp",  desc = "Dap proceed" },
     { "<leader>do",  desc = "Dap open ui" },
     -- Movement
     { "<leader>dm",  group = "Dap movement" },
@@ -290,7 +290,6 @@ wk.add({
     -- Runtime
     { "<leader>dr",  group = "Dap runtime" },
     { "<leader>drp", desc = "Dap thread paues" },
-    { "<leader>drs", desc = "Dap thread stop" },
     { "<leader>drc", desc = "Dap thread close" },
     { "<leader>dro", desc = "Dap repl open" },
     -- Cache

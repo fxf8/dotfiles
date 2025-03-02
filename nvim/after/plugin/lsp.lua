@@ -114,6 +114,8 @@ lspconfig.ruff.setup {}
 lspconfig.basedpyright.setup {}
 -- lspconfig.pyright.setup {}
 
+lspconfig.jsonls.setup {}
+
 lsp.setup()
 
 vim.opt.signcolumn = 'yes'
