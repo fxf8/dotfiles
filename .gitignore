@@ -7,3 +7,5 @@ ipython/profile_default/log/**/*
 ipython/profile_default/pid/**/*
 ipython/profile_default/security/**/*
 ipython/profile_default/startup/**/*
+
+nvim/plugin
