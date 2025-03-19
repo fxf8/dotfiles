@@ -6,6 +6,7 @@ return require('packer').startup(function()
     -- Packer can manage itself
     use('wbthomason/packer.nvim')
 
+    use("szw/vim-maximizer")
     use("folke/which-key.nvim")
     use('folke/neodev.nvim')
     use('norcalli/nvim-colorizer.lua')
@@ -13,7 +14,7 @@ return require('packer').startup(function()
 
     use('jbyuki/instant.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
-    use('github/copilot.vim')
+    -- use('github/copilot.vim')
     use('Exafunction/codeium.vim')
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
@@ -28,7 +29,7 @@ return require('packer').startup(function()
     use('BooleanCube/keylab.nvim') -- Keybindings lab
     use('rose-pine/neovim')        -- Rose Pine color scheme
 
-    -- use('airblade/vim-gitgutter')    -- Git diff within vim
+    use('airblade/vim-gitgutter')    -- Git diff within vim
     use('tpope/vim-fugitive') -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',

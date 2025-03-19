@@ -41,25 +41,46 @@ end
 
 
 USE_AI_SETTING_PATH = vim.fn.stdpath("data") .. "/use_ai_setting_path.json"
-SETTINGS_TABLE = {}
+
+local function set_key(key, value)
+    local settings = {}
+    settings[key] = value
+    Path:new(USE_AI_SETTING_PATH):write(vim.fn.json_encode(settings), "w")
+end
+
+local function get_key(key)
+    -- also read from the file
+    local settings = vim.fn.json_decode(Path:new(USE_AI_SETTING_PATH):read())
+    return settings[key]
+end
 
 if not Path:new(USE_AI_SETTING_PATH):exists() then
-    SETTINGS_TABLE["ai"] = "codeium"
-    Path:new(USE_AI_SETTING_PATH):write(vim.fn.json_encode(SETTINGS_TABLE), "w")
+    set_key("ai", "codeium")
+    set_key("disabled_ai", "copilot")
 end
 
 local function use_copilot()
-    SETTINGS_TABLE["ai"] = "copilot"
-    Path:new(USE_AI_SETTING_PATH):write(vim.fn.json_encode(SETTINGS_TABLE), "w")
-    vim.cmd("CodeiumDisable")
-    vim.cmd("Copilot enable")
+    if get_key("ai") == "codeium" then
+        set_key("ai", "copilot")
+        vim.cmd("Copilot enable")
+    end
+
+    if get_key("disabled_ai") == "copilot" then
+        set_key("disabled_ai", "codeium")
+        vim.cmd("CodeiumDisable")
+    end
 end
 
 local function use_codeium()
-    SETTINGS_TABLE["ai"] = "codeium"
-    Path:new(USE_AI_SETTING_PATH):write(vim.fn.json_encode(SETTINGS_TABLE), "w")
-    vim.cmd("Copilot disable")
-    vim.cmd("CodeiumEnable")
+    if get_key("ai") == "copilot" then
+        set_key("ai", "codeium")
+        vim.cmd("CodeiumEnable")
+    end
+
+    if get_key("disabled_ai") == "codeium" then
+        set_key("disabled_ai", "copilot")
+        vim.cmd("Copilot disable")
+    end
 end
 
 -- if the table says to use copilot, then use copilot, otherwise use codeium. Read from the file

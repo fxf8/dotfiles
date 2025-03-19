@@ -113,7 +113,7 @@ lsp.configure('gopls', {
 lspconfig.ruff.setup {}
 lspconfig.basedpyright.setup {}
 -- lspconfig.pyright.setup {}
-
+lspconfig.html.setup {}
 lspconfig.jsonls.setup {}
 
 lsp.setup()
