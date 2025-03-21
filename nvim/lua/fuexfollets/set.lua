@@ -34,20 +34,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			{ noremap = true, silent = true })                                   -- Shift+Tab inserts spaces
 
 		vim.opt.listchars = {
-			tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
+			tab = "  ", -- tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
 			--     space = ".",    -- Optional: Show spaces as dots
 			trail = "_", -- trail = "·",    -- Optional: Show trailing spaces
 			extends = "⟩", -- Optional: Show when text overflows
 			precedes = "⟨", -- Optional: Show when there's hidden text to the left
+			multispace = "           ·",
 		}
 
-
+		--[[
 		local indent = vim.fn.indent(vim.fn.line('.')) -- Get current line indent
 		if indent % 8 == 0 then
 			vim.opt.listchars = { tab = "▏ " } -- Show vertical bar for tabs at certain indents
 		else
 			vim.opt.listchars = { tab = "  " } -- Otherwise, hide them
 		end
+		]] --
 	end,
 })
 
