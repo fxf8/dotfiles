@@ -7,9 +7,16 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.preserveindent = true
-vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true })                                                 -- Tab inserts a tab character
+vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true }) -- Tab inserts a tab character
 vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
-	{ noremap = true, silent = true })                                                                                         -- Shift+Tab inserts spaces
+	{ noremap = true, silent = true }) -- Shift+Tab inserts spaces
+vim.opt.listchars = {
+	tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
+	--     space = ".",    -- Optional: Show spaces as dots
+	trail = "_", -- trail = "·",    -- Optional: Show trailing spaces
+	extends = "⟩", -- Optional: Show when text overflows
+	precedes = "⟨", -- Optional: Show when there's hidden text to the left
+}
 
 
 vim.opt.smartindent = true
