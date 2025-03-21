@@ -3,21 +3,53 @@ vim.opt.relativenumber = true
 
 vim.opt.errorbells = false
 
+--[[
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.preserveindent = true
+vim.opt.expandtab = false
 vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true }) -- Tab inserts a tab character
 vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
-	{ noremap = true, silent = true }) -- Shift+Tab inserts spaces
+	{ noremap = true, silent = true })                                         -- Shift+Tab inserts spaces
 vim.opt.listchars = {
-	tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
+	-- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
 	--     space = ".",    -- Optional: Show spaces as dots
 	trail = "_", -- trail = "·",    -- Optional: Show trailing spaces
 	extends = "⟩", -- Optional: Show when text overflows
 	precedes = "⟨", -- Optional: Show when there's hidden text to the left
 }
+]] --
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		vim.opt.tabstop = 4
+		vim.opt.softtabstop = 4
+		vim.opt.shiftwidth = 4
+		vim.opt.preserveindent = true
+		vim.opt.expandtab = false
+		vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true }) -- Tab inserts a tab character
+		vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
+			{ noremap = true, silent = true })                                   -- Shift+Tab inserts spaces
+
+		vim.opt.listchars = {
+			tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
+			--     space = ".",    -- Optional: Show spaces as dots
+			trail = "_", -- trail = "·",    -- Optional: Show trailing spaces
+			extends = "⟩", -- Optional: Show when text overflows
+			precedes = "⟨", -- Optional: Show when there's hidden text to the left
+		}
+
+
+		local indent = vim.fn.indent(vim.fn.line('.')) -- Get current line indent
+		if indent % 8 == 0 then
+			vim.opt.listchars = { tab = "▏ " } -- Show vertical bar for tabs at certain indents
+		else
+			vim.opt.listchars = { tab = "  " } -- Otherwise, hide them
+		end
+	end,
+})
 
 vim.opt.smartindent = true
 
