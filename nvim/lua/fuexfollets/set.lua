@@ -6,6 +6,11 @@ vim.opt.errorbells = false
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.preserveindent = true
+vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true })                                                 -- Tab inserts a tab character
+vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
+	{ noremap = true, silent = true })                                                                                         -- Shift+Tab inserts spaces
+
 
 vim.opt.smartindent = true
 
@@ -29,15 +34,15 @@ vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
 
 -- Split based on current window size
 vim.keymap.set("n", "<leader>s", function()
-    local width = vim.api.nvim_win_get_width(0)
-    local height = vim.api.nvim_win_get_height(0)
-    local char_ratio = 135 / 55 -- window width / height
+	local width = vim.api.nvim_win_get_width(0)
+	local height = vim.api.nvim_win_get_height(0)
+	local char_ratio = 135 / 55 -- window width / height
 
-    if width / height > char_ratio then
-        vim.cmd.vsplit()
-    else
-        vim.cmd.split()
-    end
+	if width / height > char_ratio then
+		vim.cmd.vsplit()
+	else
+		vim.cmd.split()
+	end
 end) -- Split
 
 vim.keymap.set("n", "j", "gj")
