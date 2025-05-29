@@ -15,7 +15,15 @@ return require('packer').startup(function()
     use('jbyuki/instant.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
     -- use('github/copilot.vim')
-    use('Exafunction/codeium.vim')
+    -- use('Exafunction/windsurf.vim')
+    use {
+        "Exafunction/windsurf.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+    }
+
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end }
@@ -29,21 +37,34 @@ return require('packer').startup(function()
     use('BooleanCube/keylab.nvim') -- Keybindings lab
     use('rose-pine/neovim')        -- Rose Pine color scheme
 
-    use('airblade/vim-gitgutter')    -- Git diff within vim
-    use('tpope/vim-fugitive') -- Git wrapper
+    use('airblade/vim-gitgutter')  -- Git diff within vim
+    use('tpope/vim-fugitive')      -- Git wrapper
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-    -- install without yarn or npm
+
     use({
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = {
+                "markdown" }
+        end,
+        ft = { "markdown" },
     })
 
-    use('turbio/bracey.vim')             -- Browser based live HTML/CSS/JS preview
 
-    use('xuhdev/vim-latex-live-preview') -- Live preview for latex
+    use({
+        "stevearc/aerial.nvim",
+        config = function()
+            require("aerial").setup()
+        end,
+    })
+
+    use('turbio/bracey.vim') -- Browser based live HTML/CSS/JS preview
+
+    -- use('xuhdev/vim-latex-live-preview') -- Live preview for latex
 
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
@@ -92,6 +113,19 @@ return require('packer').startup(function()
             'stevearc/dressing.nvim', -- optional for vim.ui.select
         },
     }
+
+    use({
+        'mikesmithgh/kitty-scrollback.nvim',
+        disable = false,
+        opt = true,
+        cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
+        event = { 'User KittyScrollbackLaunch' },
+        -- tag = '*', -- latest stable version, may have breaking changes if major version changed
+        -- tag = 'v6.0.0', -- pin specific tag
+        config = function()
+            require('kitty-scrollback').setup()
+        end,
+    })
 
     --[[
     use {

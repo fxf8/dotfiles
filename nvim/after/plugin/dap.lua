@@ -273,6 +273,12 @@ vim.keymap.set('n', '<leader>dce', DAP_ENABLE_USE_CACHE)  -- Dap cache enable
 vim.keymap.set('n', '<leader>dcd', DAP_DISABLE_USE_CACHE) -- Dap cache disable
 vim.keymap.set('n', '<leader>dct', DAP_TOGGLE_USE_CACHE)  -- Dap cache toggle
 
+-- Dap Virtual Text 'dv'
+vim.keymap.set('n', '<leader>dvd', function() vim.cmd("DapVirtualTextDisable") end)      -- Dap virtual text disable
+vim.keymap.set('n', '<leader>dve', function() vim.cmd("DapVirtualTextEnable") end)       -- Dap virtual text enable
+vim.keymap.set('n', '<leader>dvt', function() vim.cmd("DapVirtualTextToggle") end)       -- Dap virtual text force refresh
+vim.keymap.set('n', '<leader>dvf', function() vim.cmd("DapVirtualTextForceRefresh") end) -- Dap virtual text force refresh
+
 wk.add({
     -- Main
     { "<leader>d",   group = "Dap" },
@@ -297,4 +303,10 @@ wk.add({
     { "<leader>dce", desc = "Dap cache enable" },
     { "<leader>dcd", desc = "Dap cache disable" },
     { "<leader>dct", desc = "Dap cache toggle" },
+    -- Virtual Text
+    { "<leader>dv",  group = "Dap virtual text" },
+    { "<leader>dvd", desc = "Dap virtual text disable" },
+    { "<leader>dve", desc = "Dap virtual text enable" },
+    { "<leader>dvt", desc = "Dap virtual text toggle" },
+    { "<leader>dvf", desc = "Dap virtual text force refresh" },
 })
