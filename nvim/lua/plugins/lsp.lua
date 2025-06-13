@@ -10,6 +10,7 @@ return {
             'hrsh7th/cmp-nvim-lsp',
             'L3MON4D3/LuaSnip',
             'folke/which-key.nvim',
+            "j-hui/fidget.nvim",
         },
         config = function()
             local mason = require('mason')
@@ -19,22 +20,22 @@ return {
             local cmp_nvim_lsp = require('cmp_nvim_lsp')
             local wk = require('which-key')
 
-            mason.setup()
-            mason_lspconfig.setup({
-                ensure_installed = {
-                    'lua_ls', 'rust_analyzer', 'clangd', 'ts_ls',
-                    'jsonls', 'html', 'gopls', 'taplo', 'zk',
-                    'pyright', 'gh_actions_ls',
-                },
-                automatic_installation = false,
-            })
+            require("fidget").setup({})
 
-            local capabilities = cmp_nvim_lsp.default_capabilities()
+            mason.setup()
+
+            local capabilities = vim.tbl_deep_extend(
+                "force",
+                {},
+                vim.lsp.protocol.make_client_capabilities(),
+                cmp_nvim_lsp.default_capabilities())
 
             local on_attach = function(_, bufnr)
                 local buf_map = function(mode, lhs, rhs, desc)
                     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
                 end
+
+                print("Attached to buffer", bufnr)
 
                 buf_map('n', 'gd', vim.lsp.buf.definition, 'Go to Definition')
                 buf_map('n', 'K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -44,8 +45,8 @@ return {
                 buf_map('n', '<leader>ly', vim.lsp.buf.document_symbol, 'Document Symbols')
                 buf_map('n', '<leader>ls', vim.lsp.buf.workspace_symbol, 'Workspace Symbols')
                 buf_map('n', '<leader>ld', vim.diagnostic.open_float, 'Open Diagnostics')
-                buf_map('n', 'lr', vim.lsp.buf.references, 'Find References')
-                buf_map('n', 'li', vim.lsp.buf.implementation, 'Go to Implementation')
+                buf_map('n', '<leader>lr', vim.lsp.buf.references, 'Find References')
+                buf_map('n', '<leader>li', vim.lsp.buf.implementation, 'Go to Implementation')
 
                 wk.add({
                     { "<leader>l",  group = "LSP Actions" },
@@ -63,6 +64,62 @@ return {
                     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                 end
             end
+
+            vim.lsp.config("pyright", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("lua_ls", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("rust_analyzer", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    ["rust-analyzer"] = {
+                        checkOnSave = {
+                            enable = true,
+                            command = "clippy",
+                            extraArgs = { "--no-deps" },
+                        },
+                        cargo = {
+                            allFeatures = true,
+                        },
+                        procMacro = { enable = true },
+                    },
+                },
+            })
+            --[[
+            vim.lsp.config('rust_analyzer', {
+                on_attach = on_attach,
+                settings = {
+                    ['rust-analyzer'] = {
+                        checkOnSave = {
+                            enable = true,
+                            command = "clippy",
+                            -- extraArgs = { "--no-deps" },
+                        },
+                        diagnostics = {
+                            enable = true,
+                        }
+                    }
+                }
+            })
+            ]]
+
+            mason_lspconfig.setup({
+                ensure_installed = {
+                    "pyright", "ruff", "lua_ls", "rust_analyzer"
+                },
+            })
+
+            vim.diagnostic.config({
+                virtual_text = true,
+                -- virtual_lines = true,
+                signs = true,
+                update_in_insert = false,
+                underline = true,
+                severity_sort = true,
+                float = { border = 'rounded', source = true },
+            })
+
+            vim.opt.signcolumn = 'yes'
 
             local servers = {
                 lua_ls = {
@@ -113,22 +170,13 @@ return {
                 gh_actions_ls = {},
             }
 
+            --[[
             for server, config in pairs(servers) do
                 config.capabilities = capabilities
                 config.on_attach = on_attach
                 lspconfig[server].setup(config)
             end
-
-            vim.diagnostic.config({
-                virtual_text = true,
-                signs = true,
-                update_in_insert = false,
-                underline = true,
-                severity_sort = true,
-                float = { border = 'rounded', source = true },
-            })
-
-            vim.opt.signcolumn = 'yes'
+            ]]
         end,
     },
 
