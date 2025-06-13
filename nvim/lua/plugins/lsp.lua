@@ -80,28 +80,22 @@ return {
                         },
                         cargo = {
                             allFeatures = true,
+                            -- Enable support for standalone files:
+                            loadOutDirsFromCheck = true,
+                            -- 👇 this enables rust-analyzer to work without Cargo.toml
+                            autoreload = true,
+                            -- 👇 this is the key setting you need:
+                            -- allows rust-analyzer to work in files not in a project
+                            useRustcWrapperForBuildScripts = true,
                         },
                         procMacro = { enable = true },
+                        files = {
+                            -- 👇 allow single file mode
+                            enableStandaloneProjects = true,
+                        }
                     },
                 },
             })
-            --[[
-            vim.lsp.config('rust_analyzer', {
-                on_attach = on_attach,
-                settings = {
-                    ['rust-analyzer'] = {
-                        checkOnSave = {
-                            enable = true,
-                            command = "clippy",
-                            -- extraArgs = { "--no-deps" },
-                        },
-                        diagnostics = {
-                            enable = true,
-                        }
-                    }
-                }
-            })
-            ]]
 
             mason_lspconfig.setup({
                 ensure_installed = {
@@ -120,62 +114,13 @@ return {
             })
 
             vim.opt.signcolumn = 'yes'
+            --[[ stashed for later
 
-            local servers = {
-                lua_ls = {
-                    --[[
-                    settings = {
-                        Lua = {
-                            hint = { enable = true },
-                            runtime = { version = 'LuaJIT' },
-                            diagnostics = { globals = { 'vim' } },
-                            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-                            telemetry = { enable = false },
-                        },
-                    },
-                    ]]
-                },
-                rust_analyzer = {},
-                --[[
-                {
-                    rust_analyzer = {
-                        settings = {
-                            ["rust-analyzer"] = {
-                                cargo = {
-                                    allFeatures = true,
-                                },
-                                checkOnSave = {
-                                    enable = true,
-                                    command = "clippy",
-                                },
-                            },
-                        },
-                    },
-                },
-                ]]
-                clangd = {
-                    cmd = { 'clangd', '--background-index', '--clang-tidy', '--header-insertion=iwyu', '--completion-style=detailed' },
-                    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
-                    root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
-                },
-                ts_ls = {},
-                jsonls = {},
-                html = {},
-                gopls = { root_dir = lspconfig.util.root_pattern('go.work', 'go.mod', '.git') },
-                taplo = {},
-                zk = {},
-                ruff = {},
-                -- basedpyright = {},
-                pyright = {},
-                gh_actions_ls = {},
-            }
-
-            --[[
-            for server, config in pairs(servers) do
-                config.capabilities = capabilities
-                config.on_attach = on_attach
-                lspconfig[server].setup(config)
-            end
+            clangd = {
+                cmd = { 'clangd', '--background-index', '--clang-tidy', '--header-insertion=iwyu', '--completion-style=detailed' },
+                filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h', 'hpp', 'm', 'mm', 'cc', 'hh', 'cxx', 'hxx' },
+                root_dir = lspconfig.util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+            },
             ]]
         end,
     },
@@ -207,7 +152,6 @@ return {
         end,
     },
 
-    --[[
     -- Optional: Expand Rust Macros
     {
         'rust-lang/rust.vim',
@@ -235,5 +179,4 @@ return {
             end, {})
         end,
     },
-    ]]
 }
