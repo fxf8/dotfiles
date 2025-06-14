@@ -35,8 +35,6 @@ return {
                     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
                 end
 
-                print("Attached to buffer", bufnr)
-
                 buf_map('n', 'gd', vim.lsp.buf.definition, 'Go to Definition')
                 buf_map('n', 'K', vim.lsp.buf.hover, 'Hover Documentation')
                 buf_map('n', '<leader>ln', vim.lsp.buf.rename, 'Rename Symbol')
