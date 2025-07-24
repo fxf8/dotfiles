@@ -80,7 +80,7 @@ return {
             file:write(vim.fn.json_encode(json_data), "w")
 
             print(string.format("DAP test execution cache enabled: executable path = %s, args = %s", json_data[cwd].path,
-            json_data[cwd].args))
+                json_data[cwd].args))
         end
 
         function DAP_DISABLE_USE_CACHE()
@@ -213,6 +213,31 @@ return {
             name = 'lldb'
         }
 
+        dap.configurations.rust = {
+            {
+                name = "Debug Rust test",
+                type = "codelldb", -- mason-nvim-dap provides this adapter
+                request = "launch",
+                program = function()
+                    -- get the test executable by running `cargo test --no-run`
+                    local output = vim.fn.system("cargo test --no-run --message-format=json")
+                    for line in output:gmatch("[^\r\n]+") do
+                        local decoded = vim.fn.json_decode(line)
+                        if decoded.executable and decoded.target and decoded.target.kind and vim.tbl_contains(decoded.target.kind, "test") then
+                            return decoded.executable
+                        end
+                    end
+
+                    error("Test executable not found")
+                end,
+                args = {}, -- add test args or specific test name if desired
+                cwd = vim.fn.getcwd(),
+                stopOnEntry = false,
+                runInTerminal = false,
+                env = { RUST_BACKTRACE = "1" },
+            },
+        }
+
         -- This should also work with python poetry
 
         dap.configurations.python = {
@@ -320,6 +345,5 @@ return {
             { "<leader>dvt", desc = "Dap virtual text toggle" },
             { "<leader>dvf", desc = "Dap virtual text force refresh" },
         })
-
     end,
 }

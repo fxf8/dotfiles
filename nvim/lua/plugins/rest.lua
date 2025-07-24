@@ -1,17 +1,24 @@
 return {
     "rest-nvim/rest.nvim",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+            opts.ensure_installed = opts.ensure_installed or {}
+            table.insert(opts.ensure_installed, "http")
+        end,
+    },
     config = function()
         local wk = require("which-key")
 
-        vim.keymap.set('n', '<leader>re', '<Plug>RestNvim', { desc = 'Execute request' })
-        vim.keymap.set('n', '<leader>rp', '<Plug>RestNvimPreview', { desc = 'Preview curl' })
-        vim.keymap.set('n', '<leader>rr', '<Plug>RestNvimLast', { desc = 'Repeat last request' })
+        vim.keymap.set('n', '<leader>rr', function() vim.cmd('Rest run') end, { desc = 'Rest run request' })
+        vim.keymap.set('n', '<leader>rc', function() vim.cmd('Rest curl') end, { desc = 'Preview curl' })
+        vim.keymap.set('n', '<leader>ro', function() vim.cmd('Rest open') end, { desc = 'Repeat last request' })
 
         wk.add({
             { "<leader>r",  group = "Rest" },
-            { "<leader>re", desc = "Execute request" },
-            { "<leader>rp", desc = "Preview curl" },
-            { "<leader>rr", desc = "Repeat last request" },
+            { "<leader>rr", desc = "Rest run " },
+            { "<leader>rc", desc = "Preview curl" },
+            { "<leader>ro", desc = "Repeat last request" },
         })
     end
 }

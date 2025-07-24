@@ -46,23 +46,40 @@ return {
                 buf_map('n', '<leader>lr', vim.lsp.buf.references, 'Find References')
                 buf_map('n', '<leader>li', vim.lsp.buf.implementation, 'Go to Implementation')
 
-                wk.add({
-                    { "<leader>l",  group = "LSP Actions" },
-                    { "<leader>ln", desc = "Rename symbol" },
-                    { "<leader>la", desc = "Code actions" },
-                    { "<leader>lf", desc = "Format code" },
-                    { "<leader>ly", desc = "Document Symbols" },
-                    { "<leader>ls", desc = "Workspace symbol" },
-                    { "<leader>ld", desc = "Open diagnostics" },
-                    { "<leader>lr", desc = "Find references" },
-                    { "<leader>li", desc = "Go to Implementation" },
-                })
-
-                if vim.lsp.inlay_hint then
-                    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                local enable_inlay_hints = function()
+                    if vim.lsp.inlay_hint then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                    end
                 end
+
+                local disable_inlay_hints = function()
+                    if vim.lsp.inlay_hint then
+                        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+                    end
+                end
+
+                buf_map('n', '<leader>lhe', enable_inlay_hints, 'Enable inlay hints')
+                buf_map('n', '<leader>lhd', disable_inlay_hints, 'Disable inlay hints')
+
+                wk.add({
+                    { "<leader>l",   group = "LSP Actions" },
+                    { "<leader>ln",  desc = "Rename symbol" },
+                    { "<leader>la",  desc = "Code actions" },
+                    { "<leader>lf",  desc = "Format code" },
+                    { "<leader>ly",  desc = "Document Symbols" },
+                    { "<leader>ls",  desc = "Workspace symbol" },
+                    { "<leader>ld",  desc = "Open diagnostics" },
+                    { "<leader>lr",  desc = "Find references" },
+                    { "<leader>li",  desc = "Go to Implementation" },
+                    { "<leader>lh",  group = "LSP Inlay Hints" },
+                    { "<leader>lhe", desc = "Enable inlay hints" },
+                    { "<leader>lhd", desc = "Disable inlay hints" },
+                })
             end
 
+            vim.lsp.config("dockerls", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("docker_compose_language_service", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("taplo", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("pyright", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("lua_ls", { on_attach = on_attach, capabilities = capabilities, })

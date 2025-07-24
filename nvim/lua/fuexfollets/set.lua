@@ -1,7 +1,16 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.cursorline = true
 
 vim.opt.errorbells = false
+vim.opt.ignorecase = true
+vim.opt.lazyredraw = true
+vim.opt.smartindent = true
+
+vim.opt.colorcolumn = "100"
+
 
 --[[
 vim.opt.tabstop = 4
@@ -31,7 +40,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt.expandtab = true
         vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true }) -- Tab inserts a tab character
         vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
-            { noremap = true, silent = true })                                   -- Shift+Tab inserts spaces
+            { noremap = true, silent = true })                                         -- Shift+Tab inserts spaces
 
         vim.opt.listchars = {
             tab = "  ", -- tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
