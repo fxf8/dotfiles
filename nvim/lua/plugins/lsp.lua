@@ -10,7 +10,6 @@ return {
             'hrsh7th/cmp-nvim-lsp',
             'L3MON4D3/LuaSnip',
             'folke/which-key.nvim',
-            "j-hui/fidget.nvim",
         },
         config = function()
             local mason = require('mason')
@@ -19,8 +18,6 @@ return {
             -- local cmp = require('cmp')
             local cmp_nvim_lsp = require('cmp_nvim_lsp')
             local wk = require('which-key')
-
-            require("fidget").setup({})
 
             mason.setup()
 
@@ -77,8 +74,19 @@ return {
                 })
             end
 
+            vim.lsp.config("docker_compose_language_service",
+                {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                    settings = {
+                    }
+                })
+            vim.lsp.config("ts_ls", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
+            vim.lsp.config("jsonls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("dockerls", { on_attach = on_attach, capabilities = capabilities, })
-            vim.lsp.config("docker_compose_language_service", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("taplo", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("pyright", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
