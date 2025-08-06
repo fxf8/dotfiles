@@ -82,9 +82,14 @@ return {
                     }
                 })
             vim.lsp.config("ts_ls", {
-                on_attach = on_attach,
-                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentRangeFormattingProvider = false
+                    on_attach(client, bufnr) -- reuse your common setup
+                end,
+                capabilities = capabilities
             })
+            vim.lsp.config("cssls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("jsonls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("dockerls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("taplo", { on_attach = on_attach, capabilities = capabilities, })
@@ -202,4 +207,37 @@ return {
             end, {})
         end,
     },
+
+    {
+        "nvimtools/none-ls.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+        config = function()
+            local null_ls = require("null-ls")
+
+            null_ls.setup({
+                sources = {
+                    -- Add more if needed
+                    null_ls.builtins.formatting.prettier,
+                },
+                on_attach = function(client, bufnr)
+                    -- Only format on save if the client supports it
+                    if client.supports_method("textDocument/formatting") then
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            buffer = bufnr,
+                            callback = function()
+                                vim.lsp.buf.format({
+                                    bufnr = bufnr,
+                                    filter = function(format_client)
+                                        -- Only use null-ls (prettier) for formatting
+                                        return format_client.name == "null-ls"
+                                    end,
+                                })
+                            end,
+                        })
+                    end
+                end,
+            })
+        end,
+    }
+
 }
