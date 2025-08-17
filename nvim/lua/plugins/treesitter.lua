@@ -59,11 +59,28 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "folke/which-key.nvim" },
         opts = {
             enable = true,
-            mode = "topline",
+            mode = "cursor",
             line_numbers = true,
         },
+        config = function()
+            local wk = require("which-key")
+
+            vim.keymap.set("n", "<leader>ko", function() vim.cmd("TSContext enable") end)
+            vim.keymap.set("n", "<leader>kp", function() vim.cmd("TSContext disable") end)
+            vim.keymap.set("n", "<leader>kt", function() vim.cmd("TSContext toggle") end)
+
+            wk.add({
+                { "<leader>k",  group = "Treesitter context" },
+                { "<leader>ko", desc = "Context open" },
+                { "<leader>kp", desc = "Context close" },
+                { "<leader>kt", desc = "Context toggle" },
+            })
+
+            vim.cmd("TSContext disable")
+        end,
     },
 }
 

@@ -208,6 +208,7 @@ return {
         end,
     },
 
+    --[[
     {
         "nvimtools/none-ls.nvim",
         dependencies = { "williamboman/mason.nvim" },
@@ -239,5 +240,5 @@ return {
             })
         end,
     }
-
+    ]]
 }
