@@ -208,7 +208,6 @@ return {
         end,
     },
 
-    --[[
     {
         "nvimtools/none-ls.nvim",
         dependencies = { "williamboman/mason.nvim" },
@@ -220,6 +219,7 @@ return {
                     -- Add more if needed
                     null_ls.builtins.formatting.prettier,
                 },
+                --[[
                 on_attach = function(client, bufnr)
                     -- Only format on save if the client supports it
                     if client.supports_method("textDocument/formatting") then
@@ -237,8 +237,8 @@ return {
                         })
                     end
                 end,
+                ]]
             })
         end,
     }
-    ]]
 }
