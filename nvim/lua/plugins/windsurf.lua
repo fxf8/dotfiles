@@ -20,7 +20,7 @@ return {
         vim.keymap.set('i', '<M-j>', codeium_virtual_text.accept, opts)
         vim.keymap.set('i', '<M-k>', codeium_virtual_text.debounced_complete, opts)
         vim.keymap.set('i', '<M-x>', codeium_virtual_text.clear, opts)
-        vim.keymap.set('i', '<M-w>', codeium_virtual_text.accept_next_word, opts)
+        vim.keymap.set('i', '<M-e>', codeium_virtual_text.accept_next_word, opts)
         vim.keymap.set('i', '<M-l>', codeium_virtual_text.accept_next_line, opts)
         vim.keymap.set('i', '<M-h>', function() codeium_virtual_text.cycle_completions(1) end, opts)
         vim.keymap.set('i', '<M-y>', function() codeium_virtual_text.cycle_completions(-1) end, opts)
