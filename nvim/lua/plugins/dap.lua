@@ -49,6 +49,9 @@ return {
             -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
         }
 
+        -- Open debuggee terminal in a split (you can pick `new`, `vsplit`, or `tabnew`)
+        dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+
         mason_dap.setup()
 
         DAP_CACHED_TEST_EXECUTION_TABLE = vim.fn.stdpath("data") .. "/dap_cached_test_execution.json"
