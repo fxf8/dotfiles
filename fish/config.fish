@@ -48,7 +48,6 @@ if status is-interactive
 
     bind --mode insert \cp _fzf_home_depth_2
     fzf_configure_bindings --directory=\co
-
 end
 
 set PREV_COMMANDS_RUN 0
