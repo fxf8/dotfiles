@@ -94,9 +94,7 @@ return {
                 capabilities = capabilities,
                 cmd = { "svls", "--stdio" },
             })
-            --[[
             vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
-            ]] --
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("clangd", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("slang", { on_attach = on_attach, capabilities = capabilities, })

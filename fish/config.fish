@@ -57,7 +57,15 @@ set fish_greeting
 
 alias clipboard="xclip -sel clip" 
 alias icat="kitty +kitten icat"
-alias n="ranger --choosedir=/tmp/rangerdir; cd \$(cat /tmp/rangerdir)"
+
+function n
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
 
 export PATH="/usr/local/shortcuts:$PATH"
 
