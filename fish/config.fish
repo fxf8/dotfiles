@@ -57,6 +57,7 @@ set fish_greeting
 
 alias clipboard="xclip -sel clip" 
 alias icat="kitty +kitten icat"
+alias n="ranger --choosedir=/tmp/rangerdir; cd \$(cat /tmp/rangerdir)"
 
 export PATH="/usr/local/shortcuts:$PATH"
 
