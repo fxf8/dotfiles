@@ -48,6 +48,7 @@ if status is-interactive
 
     bind --mode insert \cp _fzf_home_depth_2
     fzf_configure_bindings --directory=\co
+
 end
 
 set PREV_COMMANDS_RUN 0
@@ -55,8 +56,10 @@ set fish_greeting
 
 # aliases
 
-alias clipboard="xclip -sel clip" 
+alias clipboard="xclip -sel clip"
 alias icat="kitty +kitten icat"
+
+alias sayhi="echo 'Hello $USER!'"
 
 function n
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
