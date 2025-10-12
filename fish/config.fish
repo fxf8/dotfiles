@@ -48,6 +48,10 @@ if status is-interactive
 
     bind --mode insert \cp _fzf_home_depth_2
     fzf_configure_bindings --directory=\co
+
+    if [ $TERM = "xterm-kitty" ]
+        tmux attach-session -t (tmux list-sessions -F "#{session_name}" 2>/dev/null | head -n 1)
+    end
 end
 
 set PREV_COMMANDS_RUN 0
