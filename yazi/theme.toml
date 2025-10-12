@@ -1,3 +1,6 @@
+[ui]
+theme = "dark"
+
 [flavor]
 dark = "rose-pine"
 light = "rose-pine"
