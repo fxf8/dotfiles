@@ -92,7 +92,7 @@ return {
             vim.lsp.config("svls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
-                cmd = { "svls", "--stdio" },
+                -- cmd = { "svls", "--stdio" },
             })
             vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
