@@ -96,6 +96,7 @@ return {
                 -- cmd = { "svls", "--stdio" },
             })
             ]]
+            vim.lsp.config("matlab_ls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("clangd", { on_attach = on_attach, capabilities = capabilities, })
