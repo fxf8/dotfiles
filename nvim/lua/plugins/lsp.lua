@@ -101,9 +101,9 @@ return {
                 capabilities = capabilities,
                 settings = {
                     MATLAB = {
-                        installPath = "/opt/MATLAB/R2025b",
+                        installPath = "/usr/local/MATLAB/R2025b",
                     },
-                }
+                },
             })
             vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
