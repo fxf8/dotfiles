@@ -50,7 +50,8 @@ return {
         }
 
         -- Open debuggee terminal in a split (you can pick `new`, `vsplit`, or `tabnew`)
-        dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+        -- dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+        dap.defaults.fallback.terminal_win_cmd = "ToggleTerm"
 
         mason_dap.setup()
 
@@ -249,6 +250,7 @@ return {
                 request = 'launch',
                 name = 'Launch file',
                 program = "${file}",
+                console = "integratedTerminal",
                 pythonPath = function()
                     local cwd = vim.fn.getcwd()
                     local file = Path:new(DAP_CACHED_TEST_EXECUTION_TABLE)
