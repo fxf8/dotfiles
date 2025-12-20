@@ -8,16 +8,19 @@ super + Return
 
 # program launcher
 super + @space
-    dmenu_run
+    rofi -show combi -show-icons
 
 super + shift + r
-    rofi -show run
+    dmenu_run
 
 super + shift + f
     rofi -show filebrowser
 
 super + shift + o
     rofi -show window
+
+super + shift + o
+    rofi -show ssh
 
 # make sxhkd reload its configuration files:
 super + Escape
