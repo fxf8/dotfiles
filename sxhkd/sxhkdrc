@@ -142,10 +142,10 @@ XF86AudioMute
     pactl set-sink-mute 0 toggle
 
 XF86MonBrightnessUp
-  brightnessctl s 10+
+  brightnessctl s +5%
 
 XF86MonBrightnessDown
-  brightnessctl s 10-
+  brightnessctl s 4%-
 
 super + shift + p
     flameshot gui
