@@ -1,0 +1,54 @@
+# Global Settings
+
+Hover:
+  ShowAKA: true
+
+InlayHints:
+  DeducedTypes: true
+  Enabled: true
+  ParameterNames: true
+
+
+---
+# C++ Settings
+
+
+If:
+    PathMatch:
+        - .*\\.hxx
+        - .*\\.c++
+        - .*\\.cxx
+        - .*\\.cpp
+        - .*\\.cc
+CompileFlags:
+  Add: [-std=c++2b, -Wall, -pedantic, -Wextra]
+  Compiler: g++
+Diagnostics:
+  ClangTidy:
+    Add: [
+      abseil-*, android-*, bugprone-*,
+      cert-*, concurrency-*, cppcoreguidelines-*,
+      google-*, darwin-*, hicpp-*, llvm-*,
+      misc-*, modernize-*, mpi-*, portability-*,
+      performance-*, readability-*,
+      ]
+    Remove: [
+      bugprone-easily-swappable-parameters,
+      bugprone-narrowing-conversions,
+      cppcoreguidelines-special-member-functions,
+      cppcoreguidelines-narrowing-conversions,
+      misc-definitions-in-headers,
+      misc-non-private-member-variables-in-classes,
+      modernize-use-trailing-return-type,
+      readability-named-parameter,
+      readability-convert-member-functions-to-static,
+      raedability-make-magic-numbers,
+      readability-magic-numbers,
+      google-readability-namespace-comments,
+      readability-make-member-function-const,
+      cppcoreguidelines-avoid-magic-numbers,
+      abseil-string-find-str-contains,
+      llvm-include-order,
+      hicpp-special-member-functions,
+      ]
+    # UnusedIncludes: Strict

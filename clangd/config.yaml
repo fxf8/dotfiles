@@ -1,41 +1,35 @@
+---
+# Global settings for both C and C++
+Hover:
+  ShowAKA: true
+InlayHints:
+  DeducedTypes: true
+  Enabled: true
+  ParameterNames: true
+
+---
+# C++ Specific Configuration
+If:
+  PathMatch: [.*\.cpp, .*\.hpp, .*\.cc, .*\.hh]
 CompileFlags:
   Add: [-std=c++2b, -Wall, -pedantic, -Wextra]
   Compiler: g++
-
 Diagnostics:
   ClangTidy:
-    Add: [
-      abseil-*, android-*, bugprone-*,
-      cert-*, concurrency-*, cppcoreguidelines-*,
-      google-*, darwin-*, hicpp-*, llvm-*,
-      misc-*, modernize-*, mpi-*, portability-*,
-      performance-*, readability-*,
-      ]
-    Remove: [
-      bugprone-easily-swappable-parameters,
-      bugprone-narrowing-conversions,
-      cppcoreguidelines-special-member-functions,
-      cppcoreguidelines-narrowing-conversions,
-      misc-definitions-in-headers,
-      misc-non-private-member-variables-in-classes,
-      modernize-use-trailing-return-type,
-      readability-named-parameter,
-      readability-convert-member-functions-to-static,
-      raedability-make-magic-numbers,
-      readability-magic-numbers,
-      google-readability-namespace-comments,
-      readability-make-member-function-const,
-      cppcoreguidelines-avoid-magic-numbers,
-      abseil-string-find-str-contains,
-      llvm-include-order,
-      hicpp-special-member-functions,
-      ]
-    UnusedIncludes: Strict
+    Add: [abseil-*, bugprone-*, cppcoreguidelines-*, modernize-*, performance-*, readability-*]
+    Remove: 
+      - bugprone-easily-swappable-parameters
+      - modernize-use-trailing-return-type
+      # ... add other removals here
 
-Hover:
-  ShowAKA: Yes
-
-InlayHints:
-  DeducedTypes: Yes
-  Enabled: Yes
-  ParameterNames: Yes
+---
+# C Specific Configuration
+If:
+  PathMatch: .*\.c
+CompileFlags:
+  Add: [-std=c2x, -Wall, -Wextra, -pedantic]
+  Compiler: gcc
+Diagnostics:
+  ClangTidy:
+    Add: [bugprone-*, readability-*, performance-*]
+    Remove: [readability-magic-numbers]
