@@ -39,11 +39,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt.preserveindent = true
         vim.opt.expandtab = true
         vim.api.nvim_set_keymap("i", "<Tab>", "\t", { noremap = true, silent = true }) -- Tab inserts a tab character
+        --[[
         vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Space><C-v><Space><C-v><Space><C-v><Space>",
             { noremap = true, silent = true })                                         -- Shift+Tab inserts spaces
+            ]]
+
+        vim.api.nvim_set_keymap("i", "<A-Tab>", "<C-v><Tab>", { noremap = true, silent = true })
 
         vim.opt.listchars = {
-            tab = "  ", -- tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
+            tab = "│ ", -- tab = "▏ ", -- tab = "▸ ", -- tab = "│ ", -- tab = "▸ ",     -- Display tabs as '▸ ' (▸ followed by a space)
             --     space = ".",    -- Optional: Show spaces as dots
             trail = "_", -- trail = "·",    -- Optional: Show trailing spaces
             extends = "⟩", -- Optional: Show when text overflows
