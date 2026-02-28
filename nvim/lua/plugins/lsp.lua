@@ -105,7 +105,8 @@ return {
                     },
                 },
             })
-            vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
+            -- vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("svlangserver", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("clangd", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("slang", { on_attach = on_attach, capabilities = capabilities, })
