@@ -39,7 +39,7 @@ if status is-interactive
     set -x fzf_fd_opts --hidden --exclude=.git
 
     function _fzf_home_depth_2 ()
-        set fzf_fd_opts --base-directory $HOME --hidden --exclude=.git --max-depth=2 --type d -a
+        set fzf_fd_opts --base-directory $HOME --hidden --exclude=.git --max-depth=3 --type d -a
         _fzf_search_directory
         set -x fzf_fd_opts --hidden --exclude=.git
     end
