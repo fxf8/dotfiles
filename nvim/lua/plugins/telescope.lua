@@ -5,15 +5,15 @@ return {
         local wk = require("which-key")
         local builtin = require('telescope.builtin')
 
-        vim.keymap.set('n', "<leader>pf", builtin.find_files, {}) -- For general files
-        vim.keymap.set('n', "<leader>pg", builtin.git_files, {})  -- For current git directory
-        vim.keymap.set('n', "<leader>ps", builtin.live_grep, {})  -- Grep file search
+        vim.keymap.set('n', "<leader>ff", builtin.find_files, {}) -- For general files
+        vim.keymap.set('n', "<leader>fg", builtin.git_files, {})  -- For current git directory
+        vim.keymap.set('n', "<leader>fs", builtin.live_grep, {})  -- Grep file search
 
         wk.add({
-            { "<leader>p",  group = "Telescope (file search)" },
-            { "<leader>pf", desc = "Find files" },
-            { "<leader>pg", desc = "Git files" },
-            { "<leader>ps", desc = "Live grep" },
+            { "<leader>f",  group = "Telescope (file search)" },
+            { "<leader>ff", desc = "Find files" },
+            { "<leader>fg", desc = "Git files" },
+            { "<leader>fs", desc = "Live grep" },
         })
 
         -- vim.api.nvim_create_autocmd({ "BufEnter" }, { pattern = { "*" }, command = "normal zx", })

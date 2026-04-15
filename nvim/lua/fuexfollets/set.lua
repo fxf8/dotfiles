@@ -84,6 +84,8 @@ vim.keymap.set("n", "<leader>E", function() vim.cmd("qa!") end) -- Quit all with
 vim.keymap.set("n", "<leader>A", vim.cmd.wqa)
 vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
 
+vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
+
 vim.keymap.set("n", "\\", "/")
 
 -- Enter netrw
