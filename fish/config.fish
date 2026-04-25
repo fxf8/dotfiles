@@ -24,6 +24,14 @@ if status is-interactive
 
     export EDITOR="nvim"
 
+    function nvim_bind
+        # Clear the command line, insert nvim, and execute
+        commandline -r "nvim"
+        commandline -f execute
+    end
+
+    bind --mode insert \en nvim_bind
+
     function mkcd ()
         mkdir -p $argv[1] && cd $argv[1]
     end
