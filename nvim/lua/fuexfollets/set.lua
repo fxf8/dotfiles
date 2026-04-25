@@ -88,6 +88,12 @@ vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
 
 vim.keymap.set("n", "\\", "/")
 
+-- Scroll down and move cursor down
+vim.keymap.set({'n', 'v'}, '<C-e>', 'j<C-e>', { noremap = true, silent = true })
+
+-- Scroll up and move cursor up
+vim.keymap.set({'n', 'v'}, '<C-y>', 'k<C-y>', { noremap = true, silent = true })
+
 -- Enter netrw
 
 -- Split based on current window size
