@@ -6,11 +6,11 @@ nitrogen --restore &
 pactl set-sink-volume 0 0%
 
 picom --animations \
-    --animation-for-open-window zoom \
-    --animation-for-transient-window zoom \
-    --no-fading-openclose \
-    -I 1 \
-    -O 1 &
+   --animation-for-open-window zoom \
+   --animation-for-transient-window zoom \
+   --no-fading-openclose \
+   -I 1 \
+   -O 1 &
 
 # picom &
 # flameshot &
