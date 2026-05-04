@@ -5,7 +5,7 @@ nitrogen --restore &
 
 pactl set-sink-volume 0 0%
 
-picom --animations \
+picom-pijulius --animations \
    --animation-for-open-window zoom \
    --animation-for-transient-window zoom \
    --no-fading-openclose \
