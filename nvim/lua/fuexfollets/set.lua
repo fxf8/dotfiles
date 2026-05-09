@@ -86,7 +86,7 @@ vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
 
 vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
 
-vim.keymap.set("n", "\\", "/")
+vim.keymap.set("n", "\\", "%")
 
 -- Scroll down and move cursor down
 vim.keymap.set({'n', 'v'}, '<C-e>', 'j<C-e>', { noremap = true, silent = true })
