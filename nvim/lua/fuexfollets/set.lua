@@ -86,13 +86,13 @@ vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
 
 vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
 
-vim.keymap.set("n", "\\", "%")
+vim.keymap.set({ "n", "v", "V" }, "\\", "%")
 
 -- Scroll down and move cursor down
-vim.keymap.set({'n', 'v'}, '<C-e>', 'j<C-e>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v', 'V' }, '<C-e>', 'j<C-e>', { noremap = true, silent = true })
 
 -- Scroll up and move cursor up
-vim.keymap.set({'n', 'v'}, '<C-y>', 'k<C-y>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v', 'V' }, '<C-y>', 'k<C-y>', { noremap = true, silent = true })
 
 -- Enter netrw
 
