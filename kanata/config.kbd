@@ -1,0 +1,26 @@
+;; Define the keys kanata will "hook" into
+(defsrc
+  q w e r t y u i o p
+  a s d f g h j k l ;
+  ralt
+)
+
+;; The default behavior (Normal typing)
+(deflayer default
+  q w e r t y u i o p
+  a s d f g h j k l ;
+  @sym-layer
+)
+
+;; The Symbol/Number Layer
+;; Activated when ralt is held
+(deflayer symbols
+  S-1 S-2 S-3 S-4 S-5 S-6 S-7 S-8 S-9 S-0
+  1 2 3 4 5 6 7 8 9 0
+  _
+)
+
+;; Create an alias for the layer toggle
+(defalias
+  sym-layer (layer-while-held symbols)
+)

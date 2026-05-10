@@ -12,6 +12,8 @@ picom-pijulius --animations \
    -I 1 \
    -O 1 &
 
+kanata --cfg ~/.config/kanata/config.kbd &
+
 # picom &
 # flameshot &
 polybar &
