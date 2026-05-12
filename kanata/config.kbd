@@ -2,7 +2,7 @@
 (defsrc
   q w e r t y u i o p
   a s d f g h j k l ;
-  m
+  c v n m
   `
   ralt
 )
@@ -11,7 +11,7 @@
 (deflayer default
   q w e r t y u i o p
   a s d f g h j k l ;
-  m
+  c v n m
   `
   @sym-layer
 )
@@ -21,7 +21,7 @@
 (deflayer symbols
   S-1 S-2 S-3 S-4 S-5 S-6 S-7 S-8 S-9 S-0
   1 2 3 4 5 6 7 8 9 0
-  S--
+  / . S-' S--
   S-`
   _
 )
