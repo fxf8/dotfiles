@@ -116,3 +116,56 @@ vim.keymap.set("v", "k", "gk")
 
 vim.keymap.set("n", "-", "`")
 vim.keymap.set("v", "-", "`")
+
+local function print_buffer_info()
+    -- 1. Get the absolute path of the current buffer
+    -- '0' always refers to the current active buffer
+    local full_path = vim.api.nvim_buf_get_name(0)
+
+    -- If the buffer hasn't been saved to a file yet, it will be empty
+    if full_path == "" then
+        print("Buffer has no file path (unsaved or special buffer).")
+        return
+    end
+
+    -- 2. Use vim.fn.expand for easy string parsing of the path
+    local filename = vim.fn.expand("%:t")
+    local extension = vim.fn.expand("%:e")
+    local parent_dir = vim.fn.expand("%:p:h")
+
+    -- 3. Use Libuv (vim.uv) to get filesystem metadata
+    local stats = vim.uv.fs_stat(full_path)
+
+    local size = "Unknown"
+    local modified = "Unknown"
+
+    if stats then
+        -- Convert bytes to something readable (KB)
+        size = string.format("%.2f KB", stats.size / 1024)
+        -- Convert timestamp to readable date
+        modified = os.date("%Y-%m-%d %H:%M:%S", stats.mtime.sec)
+    end
+
+    -- 4. Get Buffer-specific state
+    local is_modified = vim.api.nvim_get_option_value("modified", { buf = 0 })
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+
+    -- Print the output
+    --[[
+    print("--- Buffer Information ---")
+    print("Full Path:  " .. full_path)
+    print("Directory:  " .. parent_dir)
+    print("File Name:  " .. filename)
+    print("Extension:  " .. (extension ~= "" and extension or "None"))
+    print("Filetype:   " .. filetype)
+    print("File Size:  " .. size)
+    print("Modified:   " .. (is_modified and "Yes (Unsaved changes)" or "No"))
+    print("Last Saved: " .. modified)
+    print("--------------------------")
+    ]]
+
+    print("Path: " .. full_path .. "    Size: " .. size)
+end
+
+-- Map it to a key for quick testing (e.g., <leader>bi for "Buffer Info")
+vim.keymap.set('n', '<leader>bi', print_buffer_info, { desc = "Print current buffer info" })

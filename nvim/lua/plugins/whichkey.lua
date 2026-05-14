@@ -17,6 +17,10 @@ return {
             -- Lazy command group
             { "<leader>L",  group = "Lazy" },
             { "<leader>LU", desc = "Update Plugins" },
+
+            -- Custom buffer actions
+            { "<leader>b", group = "Custom Buffer Actions" },
+            { "<leader>bi", desc = "Print current buffer info" },
         })
     end
 }
