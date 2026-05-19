@@ -140,7 +140,7 @@ return {
                         procMacro = { enable = true },
                         files = {
                             -- 👇 allow single file mode
-                            enableStandaloneProjects = true,
+                            -- enableStandaloneProjects = true,
                         }
                     },
                 },
