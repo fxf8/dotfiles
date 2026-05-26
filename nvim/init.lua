@@ -1,20 +1,40 @@
 require("config.lazy")
 
-vim.treesitter.language.register('svelte', 'svelte')
-
+--[[
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "*.stories.svelte",
-    callback = function(args)
-        -- 1. Ensure the filetype is strictly 'svelte'
-        vim.bo[args.buf].filetype = "svelte"
+  pattern = "*.stories.svelte",
+  callback = function(args)
+    vim.bo[args.buf].filetype = "svelte"
+    -- Force the treesitter engine to attach to the svelte language
+    vim.treesitter.start(args.buf, "svelte")
+  end,
+})
 
-        -- 2. Force Treesitter to restart for this specific buffer
-        -- We use a scheduled function to ensure the buffer is fully loaded
-        vim.schedule(function()
-            if vim.api.nvim_buf_is_valid(args.buf) then
-                vim.treesitter.stop(args.buf)
-                vim.treesitter.start(args.buf, 'svelte')
-            end
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+        if lang then
+            pcall(vim.treesitter.start)
+        end
+    end,
+})
+]]
+
+-- 1. Ensure the filename pattern maps to the svelte filetype
+vim.filetype.add({
+    pattern = {
+        ['.*%.stories%.svelte'] = 'svelte',
+    },
+})
+
+-- 2. Single Autocmd to handle both filetype setting and Treesitter attachment
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "svelte",
+    callback = function(args)
+        -- Use pcall (protected call) to start Treesitter. 
+        -- This prevents errors if a buffer doesn't have a valid file path.
+        pcall(function()
+            vim.treesitter.start(args.buf, "svelte")
         end)
     end,
 })
