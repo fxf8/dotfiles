@@ -106,6 +106,7 @@ return {
                 },
             })
             -- vim.lsp.config("verible", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("mdx_analyzer", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("svelte", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("svlangserver", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("tinymist", { on_attach = on_attach, capabilities = capabilities, })
