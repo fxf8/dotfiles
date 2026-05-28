@@ -119,6 +119,7 @@ return {
             vim.lsp.config("pyright", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("lua_ls", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("codelldb", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("rust_analyzer", {
                 on_attach = on_attach,
                 capabilities = capabilities,
