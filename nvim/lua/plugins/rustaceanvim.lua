@@ -65,6 +65,7 @@ return {
             -- DAP Configuration (Crucial for debugging)
             dap = {
                 -- This will automatically use the codelldb you installed via Mason
+                terminal_kind = 'integrated',
             },
         }
     end
