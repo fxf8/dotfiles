@@ -82,7 +82,7 @@ vim.keymap.set("n", "<leader>e", vim.cmd.qall)                  -- Quit all 'E'
 vim.keymap.set("n", "<leader>E", function() vim.cmd("qa!") end) -- Quit all without saving
 -- Write and quit to all 'A"
 vim.keymap.set("n", "<leader>A", vim.cmd.wqa)
-vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
+vim.keymap.set("n", "<leader>F", function() vim.cmd("Yazi") end)
 
 vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
 
