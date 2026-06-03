@@ -1,6 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
-  "aerial.nvim": { "branch": "master", "commit": "585db11015abccf673dc5bd6502714d5655554be" },
+  "aerial.nvim": { "branch": "master", "commit": "28fe6e822ae344544c379d60fcb13c9519a1f08a" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "cbc7b02bb99fae35cb42f514762b89b5126651ef" },
   "duck.nvim": { "branch": "main", "commit": "d8a6b08af440e5a0e2b3b357e2f78bb1883272cd" },
   "fidget.nvim": { "branch": "main", "commit": "b61e8af9b8b68ee0ec7da5fb7a8c203aae854f2e" },
@@ -38,6 +38,5 @@
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "windsurf.nvim": { "branch": "main", "commit": "821b570b526dbb05b57aa4ded578b709a704a38a" },
-  "yazi.nvim": { "branch": "main", "commit": "8a26074568790bb5c73e56eb871a74709a13dd43" }
+  "windsurf.nvim": { "branch": "main", "commit": "821b570b526dbb05b57aa4ded578b709a704a38a" }
 }

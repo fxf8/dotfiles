@@ -66,6 +66,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "netrw",
+    callback = function()
+        local opts = { remap = true, buffer = true }
+
+        -- 'H' goes up to the parent directory (maps to netrw's '-' action)
+        vim.keymap.set("n", "H", "-", opts)
+
+        -- 'L' opens the file or enters the directory (maps to netrw's '<CR>' action)
+        vim.keymap.set("n", "L", "<CR>", opts)
+    end,
+})
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = true
@@ -82,7 +95,7 @@ vim.keymap.set("n", "<leader>e", vim.cmd.qall)                  -- Quit all 'E'
 vim.keymap.set("n", "<leader>E", function() vim.cmd("qa!") end) -- Quit all without saving
 -- Write and quit to all 'A"
 vim.keymap.set("n", "<leader>A", vim.cmd.wqa)
-vim.keymap.set("n", "<leader>F", function() vim.cmd("Yazi") end)
+vim.keymap.set("n", "<leader>F", function() vim.cmd("Explore") end)
 
 vim.keymap.set("n", "<leader>LU", function() vim.cmd("Lazy update") end)
 
