@@ -148,4 +148,5 @@ XF86MonBrightnessDown
   brightnessctl s 4%-
 
 super + shift + p
-    flameshot gui
+    QT_QPA_PLATFORM=xcb flameshot gui
+
