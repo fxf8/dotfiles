@@ -287,11 +287,11 @@ items:
         command: command-prompt -p "New Session:" "new-session -A -s '%%'"
       - name: Move window left
         key: H
-        command: swap-window -t -1
+        command: 'run-shell "~/.config/tmux/swap-window.sh -1"'
         transient: true
       - name: Move window right
         key: L
-        command: swap-window -t +1
+        command: 'run-shell "~/.config/tmux/swap-window.sh +1"'
         transient: true
       - separator: true
       - name: +Go to window
@@ -316,32 +316,39 @@ items:
           - { name: "Right",     key: l, command: "select-pane -R" }
           - { name: "Swap up",   key: U, command: "swap-pane -U" }
           - { name: "Swap down", key: D, command: "swap-pane -D" }
+      - name: +Rearrange pane (to edge, full-span)
+        key: r
+        menu:
+          - { name: "Far left",  key: h, command: 'run-shell "~/.config/tmux/move-pane-edge.sh h"' }
+          - { name: "Bottom",    key: j, command: 'run-shell "~/.config/tmux/move-pane-edge.sh j"' }
+          - { name: "Top",       key: k, command: 'run-shell "~/.config/tmux/move-pane-edge.sh k"' }
+          - { name: "Far right", key: l, command: 'run-shell "~/.config/tmux/move-pane-edge.sh l"' }
       - name: +Merge pane (vertical divider)
         key: m
         menu:
-          - { name: "Into window 0", key: "0", command: "run-shell '~/.config/tmux/merge-pane.sh 0 h'" }
-          - { name: "Into window 1", key: "1", command: "run-shell '~/.config/tmux/merge-pane.sh 1 h'" }
-          - { name: "Into window 2", key: "2", command: "run-shell '~/.config/tmux/merge-pane.sh 2 h'" }
-          - { name: "Into window 3", key: "3", command: "run-shell '~/.config/tmux/merge-pane.sh 3 h'" }
-          - { name: "Into window 4", key: "4", command: "run-shell '~/.config/tmux/merge-pane.sh 4 h'" }
-          - { name: "Into window 5", key: "5", command: "run-shell '~/.config/tmux/merge-pane.sh 5 h'" }
-          - { name: "Into window 6", key: "6", command: "run-shell '~/.config/tmux/merge-pane.sh 6 h'" }
-          - { name: "Into window 7", key: "7", command: "run-shell '~/.config/tmux/merge-pane.sh 7 h'" }
-          - { name: "Into window 8", key: "8", command: "run-shell '~/.config/tmux/merge-pane.sh 8 h'" }
-          - { name: "Into window 9", key: "9", command: "run-shell '~/.config/tmux/merge-pane.sh 9 h'" }
+          - { name: "Into window 0", key: "0", command: 'run-shell "~/.config/tmux/merge-pane.sh 0 h"' }
+          - { name: "Into window 1", key: "1", command: 'run-shell "~/.config/tmux/merge-pane.sh 1 h"' }
+          - { name: "Into window 2", key: "2", command: 'run-shell "~/.config/tmux/merge-pane.sh 2 h"' }
+          - { name: "Into window 3", key: "3", command: 'run-shell "~/.config/tmux/merge-pane.sh 3 h"' }
+          - { name: "Into window 4", key: "4", command: 'run-shell "~/.config/tmux/merge-pane.sh 4 h"' }
+          - { name: "Into window 5", key: "5", command: 'run-shell "~/.config/tmux/merge-pane.sh 5 h"' }
+          - { name: "Into window 6", key: "6", command: 'run-shell "~/.config/tmux/merge-pane.sh 6 h"' }
+          - { name: "Into window 7", key: "7", command: 'run-shell "~/.config/tmux/merge-pane.sh 7 h"' }
+          - { name: "Into window 8", key: "8", command: 'run-shell "~/.config/tmux/merge-pane.sh 8 h"' }
+          - { name: "Into window 9", key: "9", command: 'run-shell "~/.config/tmux/merge-pane.sh 9 h"' }
       - name: +Merge pane (horizontal divider)
         key: M
         menu:
-          - { name: "Into window 0", key: "0", command: "run-shell '~/.config/tmux/merge-pane.sh 0 v'" }
-          - { name: "Into window 1", key: "1", command: "run-shell '~/.config/tmux/merge-pane.sh 1 v'" }
-          - { name: "Into window 2", key: "2", command: "run-shell '~/.config/tmux/merge-pane.sh 2 v'" }
-          - { name: "Into window 3", key: "3", command: "run-shell '~/.config/tmux/merge-pane.sh 3 v'" }
-          - { name: "Into window 4", key: "4", command: "run-shell '~/.config/tmux/merge-pane.sh 4 v'" }
-          - { name: "Into window 5", key: "5", command: "run-shell '~/.config/tmux/merge-pane.sh 5 v'" }
-          - { name: "Into window 6", key: "6", command: "run-shell '~/.config/tmux/merge-pane.sh 6 v'" }
-          - { name: "Into window 7", key: "7", command: "run-shell '~/.config/tmux/merge-pane.sh 7 v'" }
-          - { name: "Into window 8", key: "8", command: "run-shell '~/.config/tmux/merge-pane.sh 8 v'" }
-          - { name: "Into window 9", key: "9", command: "run-shell '~/.config/tmux/merge-pane.sh 9 v'" }
+          - { name: "Into window 0", key: "0", command: 'run-shell "~/.config/tmux/merge-pane.sh 0 v"' }
+          - { name: "Into window 1", key: "1", command: 'run-shell "~/.config/tmux/merge-pane.sh 1 v"' }
+          - { name: "Into window 2", key: "2", command: 'run-shell "~/.config/tmux/merge-pane.sh 2 v"' }
+          - { name: "Into window 3", key: "3", command: 'run-shell "~/.config/tmux/merge-pane.sh 3 v"' }
+          - { name: "Into window 4", key: "4", command: 'run-shell "~/.config/tmux/merge-pane.sh 4 v"' }
+          - { name: "Into window 5", key: "5", command: 'run-shell "~/.config/tmux/merge-pane.sh 5 v"' }
+          - { name: "Into window 6", key: "6", command: 'run-shell "~/.config/tmux/merge-pane.sh 6 v"' }
+          - { name: "Into window 7", key: "7", command: 'run-shell "~/.config/tmux/merge-pane.sh 7 v"' }
+          - { name: "Into window 8", key: "8", command: 'run-shell "~/.config/tmux/merge-pane.sh 8 v"' }
+          - { name: "Into window 9", key: "9", command: 'run-shell "~/.config/tmux/merge-pane.sh 9 v"' }
       - name: +Status bar
         key: o
         menu:
