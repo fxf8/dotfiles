@@ -31,9 +31,11 @@ bspc config window_gap           3
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+bspc config focus_follows_pointer false
 
 bspc config pointer_motion_interval	7ms
 
+bspc rule -a Chromium follow=off focus=off
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
