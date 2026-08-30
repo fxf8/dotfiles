@@ -120,6 +120,31 @@ return {
             vim.lsp.config("ruff", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("lua_ls", { on_attach = on_attach, capabilities = capabilities, })
             vim.lsp.config("codelldb", { on_attach = on_attach, capabilities = capabilities, })
+            vim.lsp.config("jinja_lsp", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                -- Restrict to jinja-only filetypes; .j2 files (which we resolve
+                -- to the underlying filetype like `tex`) are handled by the
+                -- BufReadPost autocmd below.
+                filetypes = { "jinja", "jinja2", "htmldjango" },
+            })
+
+            -- Manually launch jinja_lsp for *.j2 buffers, since their filetype
+            -- resolves to the underlying language (tex/html/yaml/...).
+            vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+                pattern = "*.j2",
+                callback = function(args)
+                    local cmd = vim.fn.exepath("jinja-lsp")
+                    if cmd == "" then return end
+                    vim.lsp.start({
+                        name = "jinja_lsp",
+                        cmd = { cmd },
+                        root_dir = vim.fs.root(args.buf, { ".git" }) or vim.fn.getcwd(),
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    })
+                end,
+            })
             --[[
             vim.lsp.config("rust_analyzer", {
                 on_attach = on_attach,
@@ -153,7 +178,7 @@ return {
 
             mason_lspconfig.setup({
                 ensure_installed = {
-                    "pyright", "ruff", "lua_ls"
+                    "pyright", "ruff", "lua_ls", "jinja_lsp"
                 },
             })
 
