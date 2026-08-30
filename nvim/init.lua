@@ -25,6 +25,15 @@ vim.filetype.add({
     pattern = {
         ['.*%.stories%.svelte'] = 'svelte',
     },
+    extension = {
+        -- Jinja2 templates: use the underlying extension's filetype
+        -- (e.g. base.tex.j2 -> tex), falling back to jinja for bare .j2
+        j2 = function(path, _)
+            local stripped = path:gsub('%.j2$', '')
+            local ft = vim.filetype.match({ filename = stripped })
+            return ft or 'jinja'
+        end,
+    },
 })
 
 -- 2. Single Autocmd to handle both filetype setting and Treesitter attachment
