@@ -1,3 +1,11 @@
+;; Whitelist the physical keyboard so kanata doesn't grab virtual keyboards
+;; (e.g. chord-daemon-virt), which would cause an emit -> re-read feedback loop.
+(defcfg
+  linux-dev-names-include (
+    "AT Translated Set 2 keyboard"
+  )
+)
+
 ;; Define the keys kanata will "hook" into
 (defsrc
   q w e r t y u i o p

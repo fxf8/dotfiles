@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Manual launcher for the chord input daemon.
+# Runs in the foreground; Ctrl-C to stop.
+# Passes all arguments through — try `chord-daemon --help` for options.
+exec python3 "$HOME/Projects/dotfiles/scripts/chord_daemon.py" "$@"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Chord daemon (hold PrtSc, type sequence, release to emit)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/Projects/dotfiles/scripts/chord_daemon.py --device kanata
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=default.target
