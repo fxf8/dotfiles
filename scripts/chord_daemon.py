@@ -230,7 +230,25 @@ def main() -> None:
             if capturing:
                 if event.type == ecodes.EV_KEY:
                     code, state = event.code, event.value
-                    if state == 1:
+
+                    # SPACE is a hard terminator: on keydown, fire the current
+                    # sequence's mapping (if any), emit a literal space, and
+                    # reset — regardless of which keys are still held.
+                    if code == ecodes.KEY_SPACE:
+                        if state == 1:
+                            if sequence:
+                                key = "".join(sequence)
+                                output = mappings.get(key)
+                                if args.verbose:
+                                    print(f"chord-daemon: seq={key!r} -> {output!r} "
+                                          f"(space-terminated)", flush=True)
+                                if output is not None and ui is not None:
+                                    type_string(ui, output)
+                            if ui is not None:
+                                type_string(ui, " ")
+                            sequence = []
+                            held.clear()
+                    elif state == 1:
                         ch = KC_TO_CHAR.get(code)
                         if ch is not None and code not in held and len(sequence) < MAX_SEQ_LEN:
                             sequence.append(ch)

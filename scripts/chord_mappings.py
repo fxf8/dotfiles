@@ -11,11 +11,14 @@
 
 MAPPINGS: dict[str, str] = {
     " ":   " ",
+    "a":   "and",
+    "at":  "ation",
     "t":   "the",
     "te":  "there",
+    "ti":  "tion",
+    "":  "tion",
     "i":   "is",
     "e":   "end",
-    "a":   "and",
     "ati": "action",
     "f":   "for",
     "fa":  "fast",
