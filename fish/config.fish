@@ -32,6 +32,14 @@ if status is-interactive
 
     bind --mode insert \en nvim_bind
 
+    function yazi_bind
+        # Clear the command line, insert yazi wrapper, and execute
+        commandline -r "n"
+        commandline -f execute
+    end
+
+    bind --mode insert \em yazi_bind
+
     function mkcd ()
         mkdir -p $argv[1] && cd $argv[1]
     end
