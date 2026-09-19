@@ -196,6 +196,11 @@ def main() -> None:
 
     signal.signal(signal.SIGHUP, handle_sighup)
 
+    # Auto-reload: on each PrtSc-down, if chord_mappings.py's mtime has
+    # changed we reload it. Saves the manual SIGHUP step during iteration.
+    mappings_path = Path(chord_mappings.__file__).resolve()
+    last_mtime = mappings_path.stat().st_mtime
+
     # Sequence semantics: a sequence spans overlapping keypresses. Each new
     # keydown appends its char; the sequence fires on the keyup that drains
     # the set of currently-held sequence keys back to empty. Multiple
@@ -211,6 +216,16 @@ def main() -> None:
             # Leader (PrtSc): flip capture state, always swallow the event.
             if event.type == ecodes.EV_KEY and event.code == LEADER:
                 if event.value == 1 and not capturing:
+                    try:
+                        current_mtime = mappings_path.stat().st_mtime
+                        if current_mtime != last_mtime:
+                            mappings = reload_mappings()
+                            last_mtime = current_mtime
+                            print(f"chord-daemon: auto-reloaded, "
+                                  f"{len(mappings)} mappings", flush=True)
+                    except Exception as e:
+                        print(f"chord-daemon: auto-reload failed: {e}",
+                              flush=True)
                     capturing = True
                     sequence = []
                     held.clear()

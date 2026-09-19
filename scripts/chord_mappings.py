@@ -4,9 +4,8 @@
 # Order matters. Sequence keys should be plain letters/digits.
 # The output string can contain any printable character.
 #
-# After editing, reload without restart:
-#   systemctl --user reload chord-daemon
-# or:
+# The daemon auto-reloads this file the next time you press PrtSc — just
+# save and use. To force a reload without pressing PrtSc:
 #   pkill -HUP -f chord_daemon.py
 
 MAPPINGS: dict[str, str] = {
@@ -26,7 +25,6 @@ MAPPINGS: dict[str, str] = {
     "co":  "contra",
     "cos": "coverage",
     "di":  "dict",
-    "df":  "with",
     "e":   "end",
     "er":  "their",
     "ef":  "effect",
@@ -34,6 +32,7 @@ MAPPINGS: dict[str, str] = {
     "f":   "for",
     "fd":  "from",
     "fo":  "fully",
+    "fol": "following",
     "fu":  "further",
     "h":   "has",
     "ha":  "have",
@@ -42,6 +41,7 @@ MAPPINGS: dict[str, str] = {
     "ib":  "ible",
     "id":  "ideally",
     "ig":  "ing",
+    "ink": "think",
     "il":  "ility",
     "imp": "improvement",
     "in":  "inter",
@@ -58,6 +58,7 @@ MAPPINGS: dict[str, str] = {
     "or":  "ory",
     "ot":  "other",
     "ou":  "ound",
+    "oij": "together",
     "ow":  "know",
     "p":   "people",
     "t":   "the",
