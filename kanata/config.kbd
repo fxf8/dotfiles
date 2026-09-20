@@ -10,18 +10,20 @@
 (defsrc
   q w e r t y u i o p
   a s d f g h j k l ;
-  c v n m
+  c v b n m
   `
   ralt
+  lsft rsft
 )
 
 ;; The default behavior (Normal typing)
 (deflayer default
   q w e r t y u i o p
   a s d f g h j k l ;
-  c v n m
+  c v b n m
   `
   @sym-layer
+  lsft rsft
 )
 
 ;; The Symbol/Number Layer
@@ -29,12 +31,28 @@
 (deflayer symbols
   S-1 S-2 S-3 S-4 S-5 S-6 S-7 S-8 S-9 S-0
   1 2 3 4 5 6 7 8 9 0
-  / . S-' S--
+  / . _ S-' S--
   S-`
   _
+  @sh-sym-layer @sh-sym-layer
 )
 
-;; Create an alias for the layer toggle
+;; The Shift+Symbol Layer
+;; Activated when either shift is held while ralt is already held.
+;; Press ralt FIRST, then shift — otherwise the shift keydown is processed
+;; in the default layer and emitted, and unshifted outputs like `[` come
+;; out as `{` because shift is still held by the OS.
+(deflayer shift-symbols
+  _   \   /   S-/ _   _   S-' '   S-; ;
+  _   _   [   S-[ S-, S-. S-] ]   _   _
+  _   =   S-= -   ,
+  _
+  _
+  _   _
+)
+
+;; Create aliases for the layer toggles
 (defalias
   sym-layer (layer-while-held symbols)
+  sh-sym-layer (layer-while-held shift-symbols)
 )
