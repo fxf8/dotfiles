@@ -27,32 +27,58 @@
 )
 
 ;; The Symbol/Number Layer
-;; Activated when ralt is held
+;; Activated when ralt is held. Each key that has a shift-variant is a
+;; `fork` that checks (lsft rsft) at press time:
+;;   * shift held  -> shift+ralt variant
+;;   * shift not held -> plain ralt variant
+;;
+;; This per-key check means the layer transition is not tied to a specific
+;; trigger key, so releasing shift while ralt is still held (or vice versa)
+;; correctly returns to plain-symbols or default behavior on the next press.
+;;
+;; Actions for the shift-held branch are crafted for the "shift is emitted"
+;; state (since the user is physically holding shift):
+;;   * shifted final char (e.g. `<`) -> emit plain base key (`,`), which the
+;;     OS combines with the already-held shift.
+;;   * unshifted final char (e.g. `[`) -> `(unmod (lsft rsft) X)`, which
+;;     releases shift for the emission and restores it afterwards.
 (deflayer symbols
-  S-1 S-2 S-3 S-4 S-5 S-6 S-7 S-8 S-9 S-0
-  1 2 3 4 5 6 7 8 9 0
-  / . _ S-' S--
+  S-1
+  (fork S-2 (unmod (lsft rsft) \) (lsft rsft))
+  (fork S-3 (unmod (lsft rsft) /) (lsft rsft))
+  (fork S-4 / (lsft rsft))
+  S-5
+  S-6
+  (fork S-7 ' (lsft rsft))
+  (fork S-8 (unmod (lsft rsft) ') (lsft rsft))
+  (fork S-9 ; (lsft rsft))
+  (fork S-0 (unmod (lsft rsft) ;) (lsft rsft))
+
+  1
+  (fork 2 (unmod (lsft rsft) ret) (lsft rsft))
+  (fork 3 (unmod (lsft rsft) [) (lsft rsft))
+  (fork 4 [ (lsft rsft))
+  (fork 5 , (lsft rsft))
+  (fork 6 . (lsft rsft))
+  (fork 7 ] (lsft rsft))
+  (fork 8 (unmod (lsft rsft) ]) (lsft rsft))
+  (fork 9 \ (lsft rsft))
+  0
+
+  /
+  (fork . (unmod (lsft rsft) =) (lsft rsft))
+  (fork b = (lsft rsft))
+  (fork S-' (unmod (lsft rsft) -) (lsft rsft))
+  (fork S-- (unmod (lsft rsft) ,) (lsft rsft))
+
   S-`
+
   _
-  @sh-sym-layer @sh-sym-layer
+
+  _ _
 )
 
-;; The Shift+Symbol Layer
-;; Activated when either shift is held while ralt is already held.
-;; Press ralt FIRST, then shift — otherwise the shift keydown is processed
-;; in the default layer and emitted, and unshifted outputs like `[` come
-;; out as `{` because shift is still held by the OS.
-(deflayer shift-symbols
-  _   \   /   S-/ _   _   S-' '   S-; ;
-  _   _   [   S-[ S-, S-. S-] ]   _   _
-  _   =   S-= -   ,
-  _
-  _
-  _   _
-)
-
-;; Create aliases for the layer toggles
+;; Aliases for the layer toggle.
 (defalias
   sym-layer (layer-while-held symbols)
-  sh-sym-layer (layer-while-held shift-symbols)
 )
