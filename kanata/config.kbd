@@ -47,8 +47,8 @@
   (fork S-2 (unmod (lsft rsft) \) (lsft rsft))
   (fork S-3 (unmod (lsft rsft) /) (lsft rsft))
   (fork S-4 / (lsft rsft))
-  S-5
-  S-6
+  (fork S-5 (unmod (lsft rsft) `) (lsft rsft))
+  (fork S-6 ` (lsft rsft))
   (fork S-7 ' (lsft rsft))
   (fork S-8 (unmod (lsft rsft) ') (lsft rsft))
   (fork S-9 ; (lsft rsft))
