@@ -6,7 +6,7 @@ if status is-interactive
     alias py-activate "source $HOME/inst/venv/bin/activate.fish"
 
     set -x PATH "$HOME/.cargo/bin:$PATH" # cargo binaries
-    set -x PATH "$PATH:$HOME/go/bin" # golang binaries
+    set -x PATH "$HOME/go/bin:$PATH" # golang binaries
     set -x PATH "$PATH:/usr/lib/emscripten"
     set -x PATH "$PATH:$HOME/.local/bin"
     set -x PATH "$PATH:/usr/lib/jvm/java-21-openjdk/bin/"
