@@ -1,0 +1,41 @@
+#!/bin/bash
+
+BATTERY_PATH="/sys/class/power_supply/BAT0"
+STATE_FILE="${XDG_RUNTIME_DIR:-/tmp}/battery-notify-state"
+
+capacity=$(cat "$BATTERY_PATH/capacity")
+status=$(cat "$BATTERY_PATH/status")
+
+if [[ "$status" == "Charging" || "$status" == "Full" ]]; then
+    rm -f "$STATE_FILE"
+    exit 0
+fi
+
+if [[ "$status" != "Discharging" && "$status" != "Not charging" ]]; then
+    exit 0
+fi
+
+last_capacity=100
+[[ -f "$STATE_FILE" ]] && last_capacity=$(cat "$STATE_FILE")
+
+echo "$capacity" > "$STATE_FILE"
+
+[[ $capacity -ge $last_capacity ]] && exit 0
+
+# 20%: warning
+if [[ $last_capacity -gt 20 && $capacity -le 20 ]]; then
+    notify-send -u normal -i battery-low "Battery Low" "Battery is at ${capacity}%. Consider plugging in."
+fi
+
+# 10%: critical
+if [[ $last_capacity -gt 10 && $capacity -le 10 ]]; then
+    notify-send -u critical -i battery-caution "Battery Critical" "Battery is at ${capacity}%! Plug in now."
+fi
+
+# 5% through 1%: critical per-percent
+for threshold in 5 4 3 2 1; do
+    if [[ $last_capacity -gt $threshold && $capacity -le $threshold ]]; then
+        notify-send -u critical -i battery-empty "Battery Critically Low!" "Battery is at ${capacity}%! System may shut down soon."
+        break
+    fi
+done

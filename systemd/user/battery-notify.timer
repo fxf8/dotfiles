@@ -1,0 +1,9 @@
+[Unit]
+Description=Poll battery level every minute
+
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=60
+
+[Install]
+WantedBy=timers.target

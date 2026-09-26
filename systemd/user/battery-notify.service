@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery level notification
+
+[Service]
+Type=oneshot
+ExecStart=/home/fuex/Projects/dotfiles/scripts/battery-notify
