@@ -10,7 +10,7 @@
 (defsrc
   q w e r t y u i o p
   a s d f g h j k l ;
-  c v b n m
+  z x c v b n m
   `
   ralt
   lsft rsft
@@ -20,7 +20,7 @@
 (deflayer default
   q w e r t y u i o p
   a s d f g h j k l ;
-  c v b n m
+  z x c v b n m
   `
   @sym-layer
   lsft rsft
@@ -65,6 +65,8 @@
   (fork 9 \ (lsft rsft))
   0
 
+  (fork z f13 (lsft rsft))
+  (fork x f14 (lsft rsft))
   /
   (fork . (unmod (lsft rsft) =) (lsft rsft))
   (fork b = (lsft rsft))
