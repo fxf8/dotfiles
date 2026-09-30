@@ -6,8 +6,12 @@ show_hidden = true
 pdf = [
   { run = 'okular %s', desc = "Okular", orphan = true },
 ]
+docx = [
+  { run = 'onlyoffice-desktopeditors %s', desc = "OnlyOffice", orphan = true },
+]
 
 [open]
 prepend_rules = [
   { mime = "application/pdf", use = "pdf" },
+  { mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document", use = "docx" },
 ]
