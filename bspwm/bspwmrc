@@ -14,6 +14,7 @@ picom-pijulius --animations \
 
 kanata --cfg ~/.config/kanata/config.kbd &
 setxkbmap -option caps:swapescape
+xmodmap ~/.Xmodmap
 
 # picom &
 # flameshot &
