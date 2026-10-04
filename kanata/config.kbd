@@ -65,9 +65,9 @@
   (fork 9 \ (lsft rsft))
   0
 
-  (fork z f13 (lsft rsft))
-  (fork x f14 (lsft rsft))
-  /
+  (fork left f13 (lsft rsft))
+  (fork right (unmod (lsft rsft) down) (lsft rsft))
+  (fork / (unmod (lsft rsft) up) (lsft rsft))
   (fork . (unmod (lsft rsft) =) (lsft rsft))
   (fork b = (lsft rsft))
   (fork S-' (unmod (lsft rsft) -) (lsft rsft))
