@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    echo "Usage: $(basename "$0") <command>" >&2
+    exit 1
+fi
+
+cmd="$1"
+rank=1
+declare -A seen
+
+IFS=: read -ra dirs <<< "$PATH"
+for dir in "${dirs[@]}"; do
+    [[ -z "$dir" ]] && dir="."
+    bin="$dir/$cmd"
+    # Skip non-existent, non-executable, or already-seen paths
+    [[ -f "$bin" && -x "$bin" ]] || continue
+    real=$(readlink -f "$bin")
+    [[ -n "${seen[$real]}" ]] && continue
+    seen[$real]=1
+
+    if [[ -L "$bin" ]]; then
+        entry="$bin -> $real"
+    else
+        entry="$bin"
+    fi
+
+    if [[ $rank -eq 1 ]]; then
+        label="[active]"
+    else
+        label="[shadowed by #1]"
+    fi
+
+    printf "%d  %s  %s\n" "$rank" "$entry" "$label"
+    ((rank++))
+done
+
+if [[ $rank -eq 1 ]]; then
+    echo "No instances of '$cmd' found in PATH" >&2
+    exit 1
+fi
