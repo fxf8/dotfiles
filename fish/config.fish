@@ -32,6 +32,15 @@ if status is-interactive
 
     bind --mode insert \en nvim_bind
 
+    function edit_cmdline_bind
+        set -l tmpfile (mktemp --suffix=.fish)
+        commandline > $tmpfile
+        $EDITOR $tmpfile
+        commandline (string trim --right (cat $tmpfile))
+        rm -f $tmpfile
+    end
+    bind --mode insert \ee edit_cmdline_bind
+
     function yazi_bind
         # Clear the command line, insert yazi wrapper, and execute
         commandline -r "n"
