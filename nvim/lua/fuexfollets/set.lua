@@ -99,10 +99,17 @@ vim.keymap.set("n", "<leader>s", function()
     end
 end) -- Split
 
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
-vim.keymap.set("v", "j", "gj")
-vim.keymap.set("v", "k", "gk")
+local function smart_j()
+    local is_macro = vim.fn.reg_executing() ~= "" or vim.fn.reg_recording() ~= ""
+    return (vim.v.count > 0 or is_macro) and "j" or "gj"
+end
+local function smart_k()
+    local is_macro = vim.fn.reg_executing() ~= "" or vim.fn.reg_recording() ~= ""
+    return (vim.v.count > 0 or is_macro) and "k" or "gk"
+end
+
+vim.keymap.set({ "n", "v" }, "j", smart_j, { expr = true })
+vim.keymap.set({ "n", "v" }, "k", smart_k, { expr = true })
 
 vim.keymap.set("n", "-", "`")
 vim.keymap.set("v", "-", "`")
