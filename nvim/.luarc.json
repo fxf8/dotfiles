@@ -1,0 +1,8 @@
+{
+    "runtime.version": "LuaJIT",
+    "workspace.library": [
+        "${3rd}/vim/library",
+        "${3rd}/luv/library"
+    ],
+    "workspace.checkThirdParty": false
+}

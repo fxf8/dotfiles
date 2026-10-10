@@ -50,12 +50,8 @@ return {
         vim.keymap.set('i', '<M-h>', function() codeium_virtual_text.cycle_completions(1) end, opts)
         vim.keymap.set('i', '<M-y>', function() codeium_virtual_text.cycle_completions(-1) end, opts)
 
-        codeium_virtual_text.set_statusbar_refresh(function(args)
-            print(args)
-        end)
-
         require('codeium.virtual_text').set_statusbar_refresh(function()
-            require('lualine').refresh() -- redraw the statusline
+            require('lualine').refresh()
         end)
 
         -- vim.cmd("let g:codeium_no_map_tab = 1")
