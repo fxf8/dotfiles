@@ -1,0 +1,87 @@
+! ============================================================
+! xmodmap equivalent of kanata/config.kbd
+! ============================================================
+! Holds Right Alt to activate the symbols/numbers layer.
+!
+! Level 1 (key alone)       = unchanged
+! Level 2 (shift)           = unchanged
+! Level 3 (ralt)            = symbol/number layer
+! Level 4 (ralt + shift)    = shift-variant of the layer
+!
+! Limitations vs kanata:
+!   - The ralt modifier bit is replaced entirely; ralt alone no
+!     longer sends Alt_R to applications.
+!   - Keys without a shift-variant in kanata (a, ;, q) set the
+!     same keysym at Level 3 and 4. If an application is shift-
+!     aware at Level 4, it may still see a Shift modifier.
+!   - F13/F14 mappings require the application to recognise them.
+! ============================================================
+
+! -- Right Alt → Mode_switch (the Level 3 modifier) ----------
+remove mod1 = Alt_R
+keysym Alt_R = Mode_switch
+add mod3 = Mode_switch
+
+! -- Top row -------------------------------------------------
+! ralt+q  → !    ralt+shift+q → !
+keysym q = q Q exclam exclam
+! ralt+w  → @    ralt+shift+w → backslash
+keysym w = w W at backslash
+! ralt+e  → #    ralt+shift+e → /
+keysym e = e E numbersign slash
+! ralt+r  → $    ralt+shift+r → ?
+keysym r = r R dollar question
+! ralt+t  → %    ralt+shift+t → `
+keysym t = t T percent grave
+! ralt+y  → ^    ralt+shift+y → ~
+keysym y = y Y asciicircum asciitilde
+! ralt+u  → &    ralt+shift+u → "
+keysym u = u U ampersand quotedbl
+! ralt+i  → *    ralt+shift+i → '
+keysym i = i I asterisk apostrophe
+! ralt+o  → (    ralt+shift+o → :
+keysym o = o O parenleft colon
+! ralt+p  → )    ralt+shift+p → ;
+keysym p = p P parenright semicolon
+
+! -- Home row ------------------------------------------------
+! ralt+a  → 1    ralt+shift+a → 1
+keysym a = a A 1 1
+! ralt+s  → 2    ralt+shift+s → Return
+keysym s = s S 2 Return
+! ralt+d  → 3    ralt+shift+d → [
+keysym d = d D 3 bracketleft
+! ralt+f  → 4    ralt+shift+f → {
+keysym f = f F 4 braceleft
+! ralt+g  → 5    ralt+shift+g → <
+keysym g = g G 5 less
+! ralt+h  → 6    ralt+shift+h → >
+keysym h = h H 6 greater
+! ralt+j  → 7    ralt+shift+j → }
+keysym j = j J 7 braceright
+! ralt+k  → 8    ralt+shift+k → ]
+keysym k = k K 8 bracketright
+! ralt+l  → 9    ralt+shift+l → |
+keysym l = l L 9 bar
+! ralt+;  → 0    ralt+shift+; → 0
+keysym semicolon = semicolon colon 0 0
+
+! -- Bottom row ----------------------------------------------
+! ralt+z  → Left      ralt+shift+z → F14
+keysym z = z Z Left F14
+! ralt+x  → Right     ralt+shift+x → Down
+keysym x = x X Right Down
+! ralt+c  → /         ralt+shift+c → Up
+keysym c = c C slash Up
+! ralt+v  → .         ralt+shift+v → =
+keysym v = v V period equal
+! ralt+b  → F13       ralt+shift+b → +
+keysym b = b B F13 plus
+! ralt+n  → "         ralt+shift+n → -
+keysym n = n N quotedbl minus
+! ralt+m  → _         ralt+shift+m → ,
+keysym m = m M underscore comma
+
+! -- Backtick ------------------------------------------------
+! ralt+`  → ~    ralt+shift+` → ~
+keysym grave = grave asciitilde asciitilde asciitilde
