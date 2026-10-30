@@ -85,3 +85,9 @@ keysym m = m M underscore comma
 ! -- Backtick ------------------------------------------------
 ! ralt+`  → ~    ralt+shift+` → ~
 keysym grave = grave asciitilde asciitilde asciitilde
+
+! -- Caps Lock ↔ Escape swap --------------------------------
+remove Lock = Caps_Lock
+keysym Caps_Lock = Escape
+keysym Escape = Caps_Lock
+add Lock = Caps_Lock
