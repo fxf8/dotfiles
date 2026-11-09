@@ -1,5 +1,6 @@
 return {
     "Exafunction/windsurf.nvim",
+    enabled = false,
     config = function()
         local codeium = require("codeium")
 
